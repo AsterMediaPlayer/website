@@ -39,12 +39,19 @@
             ]
         },
         windows: {
-            name: 'Aster for Windows',
+            name: 'Aster for Windows (beta)',
             file: true,
-            url: '',   // the Windows installer
+            release: 'https://github.com/AsterMediaPlayer/aster-windows/releases/tag/v0.11.0-beta',
+            choices: [
+                { label: 'Installer (recommended)', note: '.exe · x64',
+                  url: 'https://github.com/AsterMediaPlayer/aster-windows/releases/download/v0.11.0-beta/Aster-0.11.0-beta-windows-x64-setup.exe' },
+                { label: 'Portable, runs from any folder', note: '.zip · x64',
+                  url: 'https://github.com/AsterMediaPlayer/aster-windows/releases/download/v0.11.0-beta/Aster-0.11.0-beta-windows-x64.zip' }
+            ],
             next: [
-                'Open the downloaded installer and follow its steps. Aster needs 64-bit Windows 10 (version 1809) or later.',
-                'Then open Aster and add your server.'
+                'Open the installer and follow its steps; it doesn\'t need administrator rights. Or unzip the portable version anywhere and run Aster from there. Aster needs 64-bit Windows 10 (version 1809) or later.',
+                'The app isn\'t signed yet, so Windows SmartScreen may warn you the first time. Choose More info, then Run anyway.',
+                'Then open Aster and add your server. This is a beta, so if something goes wrong, email support@astermediaplayer.com.'
             ]
         },
         linux: {
