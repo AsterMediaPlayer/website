@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aster Media Player</title>
+<meta name="description" content="Aster Media Player is a free Jellyfin client for Apple TV, iPhone and iPad that also works with Emby and Plex, with TV channels, anime openings and endings, and disc menus.">
+<link rel="icon" type="image/png" sizes="32x32" href="brand/icon-32.png">
+<link rel="apple-touch-icon" href="brand/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>img{max-width:100%;height:auto}</style>
+<link rel="stylesheet" href="styles.css?v=202611121500">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="brand/aster-logo-360.webp" width="360" height="111" alt="Aster Media Player"></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#features">Features</a>
+      <a href="#platforms">Platforms</a>
+      <a href="#donate">Donate</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <img class="hero-logo" src="brand/aster-logo-880.webp" width="880" height="272" fetchpriority="high" alt="Aster Media Player">
+        <p class="eyebrow">For Jellyfin, Emby and Plex, on Apple devices</p>
+        <h1>Your library, <em>on the air.</em></h1>
+        <p class="lede">Aster plays your Jellyfin server like television. Tune into channels you build from your own shows, watch anime with its real openings, and open discs through their menus.</p>
+        <div class="cta-row">
+          <!-- Goes via the thanks page, which opens the App Store (link in thanks.js, apple.url). -->
+          <a class="btn btn-primary" href="thanks.html?get=apple">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.6-1-2.6-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg>
+            Download on the App Store
+          </a>
+          <a class="btn btn-ghost" href="#features">See what it does</a>
+        </div>
+        <p class="platform-note">Free on the App Store for Apple TV, iPhone and iPad, and as a <a href="thanks.html?get=linux">Linux beta</a>. Mac, Windows, Android and Android TV are coming soon. <a href="features.html">See what each one does</a>.</p>
+      </div>
+
+      <figure class="hero-shot" id="channels-shot">
+        <img src="screenshots/channels-guide.webp" width="1672" height="941" fetchpriority="high" decoding="async"
+             alt="Aster's Channels guide on Apple TV. Three channels, Moonlit Movies, Comfort Loop and Starwave, are listed against times from 11:00 AM to 1:30 PM, with the current programme, Lanterns of Hollowmere, shown above with its poster and description, and an Edit Channels button.">
+        <figcaption>The Channels guide in Aster for Apple TV. <span class="shot-tag">Channels</span> <span class="ai-note">AI-generated artwork. The shows pictured are fictional.</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Features</p>
+        <h2>The parts of TV you missed, built for your own server</h2>
+        <p>Aster connects to the Jellyfin server you already run, or your Emby or Plex server. Your media stays where it is.</p>
+      </div>
+
+      <div class="features">
+        <article class="feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M8 2l4 4 4-4"/></svg></div>
+          <h3>Channels</h3>
+          <p>Pseudo live TV without a second server. Any Jellyfin playlist becomes a channel that's always on, with a guide, commercial breaks and channel surfing, all worked out by the app.</p>
+          <ul class="feature-list">
+            <li>Nothing extra to host: just Jellyfin and Aster</li>
+            <li>Five ways to program a channel, from strict rotation to original air order</li>
+            <li>Your own commercials, promos, trailers and bumpers between shows</li>
+          </ul>
+          <p class="detail">1 Moonlit Movies · now: Lanterns of Hollowmere · next: The Clockwork Garden</p>
+          <a class="feature-link" href="#channels">More about Channels</a>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></div>
+          <h3>Anime openings and endings</h3>
+          <p>The openings and endings are half of why you love the show. Aster plays each one with the episodes it aired with, alongside its full-length song and music video.</p>
+          <ul class="feature-list">
+            <li>Matched to the right episodes, even when the opening changes mid-season</li>
+            <li>Song, artist and episode details filled in for you</li>
+            <li>Missing one? The server plugin can cut it from your own episodes</li>
+          </ul>
+          <p class="detail">OP1 · Starfall · Lumina// · eps 1–12 · TV · Full · MV</p>
+          <a class="feature-link" href="#anime">More about anime themes</a>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/></svg></div>
+          <h3>Disc menus</h3>
+          <p>When you rip a disc, you lose its menu. Aster brings it back: Play Movie, Scene Selection and Special Features, with the art, music and transitions that made it feel like a release.</p>
+          <ul class="feature-list">
+            <li>Menus link to the right film and its extras automatically</li>
+            <li>Install menus other people have made with one click</li>
+            <li>Build your own with a live-preview editor</li>
+          </ul>
+          <p class="detail">Ember Crown · Play Feature · Chapters · Disc Extras</p>
+          <a class="feature-link" href="#disc">More about disc menus</a>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></div>
+          <h3>Made for Jellyfin</h3>
+          <p>Sign in to the Jellyfin server you already run and pick up where you left off. Your libraries, users, watch progress and parental controls all come from Jellyfin, so Aster fits into the setup you have instead of replacing it. Running Emby or Plex? Aster works with them too, with most features, and more will be added in later releases.</p>
+          <p class="detail">https://jellyfin.example.com · Signed in as you</p>
+          <a class="feature-link" href="#home-shot">See the home screen</a>
+        </article>
+      </div>
+      <p class="plugin-note">Channels and anime openings work with Jellyfin alone, and the free Anime OP/ED plugin makes the openings even better. Disc menus use a free companion plugin on your Jellyfin server. Every feature is free.</p>
+    </div>
+  </section>
+
+  <section class="section spotlight" id="channels">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Channels</p>
+        <h2>Pseudo live TV, minus the extra server</h2>
+        <p class="spot-lede">No longer do you have to install a server on your server (Yo dawg, I got you a server for your server!) to have a pseudo live TV experience.</p>
+        <p>Aster's channels run on the Jellyfin server you already have. There's no second app to host and keep updated, no stream to transcode around the clock, and no tuner, M3U or XMLTV files to wire up. Pick a playlist, give it a channel number, and it's on the air.</p>
+      </div>
+
+      <div class="spot-how">
+        <div>
+          <h3>Your playlists are the channels</h3>
+          <p>A channel is a Jellyfin playlist with a few tags on it. That's the whole database: nothing to migrate, nothing extra to back up, and your channels move with your server.</p>
+        </div>
+        <div>
+          <h3>Always already on</h3>
+          <p>Aster works out the schedule from the clock, so switching to a channel drops you mid-show, like real TV. Every device in the house sees the same lineup at the same moment.</p>
+        </div>
+        <div>
+          <h3>No plugin required</h3>
+          <p>Create and edit channels right in the app. Prefer a keyboard? The free Channels plugin adds an editor to your Jellyfin dashboard, and you can remove it any time without losing a channel.</p>
+        </div>
+      </div>
+
+      <h3 class="spot-sub">Program it like a network</h3>
+      <dl class="spot-list">
+        <div><dt>Five ways to air</dt><dd>Shows take turns one episode at a time, run in blocks of a few episodes, shuffle into a fresh order each day, week or month, play the playlist straight through, or follow original air dates across every show.</dd></div>
+        <div><dt>Lineups that fill themselves</dt><dd>Pull in whole genres, networks, studios or collections, and new episodes join the channel as they arrive. Narrow it by library, year, age rating or running time, and give favourite shows extra airtime.</dd></div>
+        <div><dt>Commercial breaks</dt><dd>Bring back the ads, promos, trailers, interstitials and bumpers you grew up with. Choose how long each break runs and how often it comes around, and whether bumpers play going into the break, coming out of it, or both.</dd></div>
+        <div><dt>Shows that start on time</dt><dd>Line programmes up to the hour, half hour or any mark you like. Breaks stretch to fill the gap, so the next show starts right on the :00.</dd></div>
+        <div><dt>Looks the part</dt><dd>Channel logos in the guide, and an optional station logo in the corner of the screen. Pick its corner, size and transparency, and have it fade out after a while.</dd></div>
+        <div><dt>Channel surfing</dt><dd>A full guide shows what's on now and next. Or flip through channels over whatever you're watching, see how much of each show is left, and press Select to tune in.</dd></div>
+        <div><dt>Shuffle again</dt><dd>Bored of tonight's lineup? Deal a new one, and everyone watching that channel gets the change.</dd></div>
+        <div><dt>Channels for the right people</dt><dd>Keep a channel to certain users, like a kids' channel that only shows up on their profile, or share it with everyone on your server.</dd></div>
+      </dl>
+      <p class="plugin-note"><a href="#channels-shot">See the channel guide</a> · <a href="#flipper-shot">See channel flipping</a></p>
+    </div>
+  </section>
+
+  <section class="section spotlight" id="anime">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Anime openings &amp; endings</p>
+        <h2>Every opening, right where it aired</h2>
+        <p class="spot-lede">Skipping the opening is a crime. Aster gives every OP and ED the spotlight it deserves.</p>
+        <p>Drop your theme files into a folder on your Jellyfin server. The free Anime OP/ED plugin matches each one to its show, season and episodes and fills in the song and artist. Aster then plays it from the episode page, in its own music library, or as the full song and music video.</p>
+      </div>
+
+      <figure class="video-demo">
+        <div class="frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/syTcaU8J3r8?rel=0" title="Aster Anime Theme Video Demo" loading="lazy"
+                  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <figcaption>See it in action: anime openings and endings in Aster.</figcaption>
+      </figure>
+
+      <div class="spot-how">
+        <div>
+          <h3>Matched to the episode</h3>
+          <p>Each theme is tied to the episodes it actually aired with, so when a show changes openings halfway through a season, Aster changes with it. Works with Shokofin and with shows split into seasons.</p>
+        </div>
+        <div>
+          <h3>TV size, full song or music video</h3>
+          <p>Keep up to three versions of every theme: the 90-second TV cut, the full-length song and the official music video. Watch OP and Watch ED on any episode page, then switch to whichever version you're in the mood for.</p>
+        </div>
+        <div>
+          <h3>Missing one? Cut it yourself</h3>
+          <p>Aster can install a plugin on your Jellyfin server that clips missing openings and endings straight out of your own episodes, using their chapter markers. Every clip waits for your OK in the Jellyfin dashboard: approve it, reject it, or have it try a cleaner episode.</p>
+        </div>
+      </div>
+
+      <h3 class="spot-sub">Your whole theme collection</h3>
+      <dl class="spot-list">
+        <div><dt>Works without the plugin</dt><dd>No plugin on your server? Aster looks for opening and ending chapter markers in your episodes and makes its best guess, so Watch OP and Watch ED still work whenever it finds them. The plugin adds the song details, full versions, music videos and everything else here.</dd></div>
+        <div><dt>Song details, done for you</dt><dd>Titles, artists and episode ranges are filled in from AnimeThemes.moe. Prefer your own? Edit any theme in the plugin's editor in your Jellyfin dashboard, or put the details in the file name.</dd></div>
+        <div><dt>A real music library</dt><dd>Optionally publish your themes as Jellyfin libraries: one album of songs per show, plus every opening and ending as a music video. Search, shuffle, make playlists and favourite them like any other music.</dd></div>
+        <div><dt>Plays on every screen</dt><dd>Theme files often come as WebM or Ogg, which Apple devices can't play. The plugin makes a playable copy on your server automatically, so everything works on Apple TV, iPhone, iPad and Mac.</dd></div>
+        <div><dt>Spoiler-safe</dt><dd>Themes flagged as spoilers or NSFW are handled with care, and NSFW themes get an age rating so your parental controls apply to them too.</dd></div>
+        <div><dt>Bring files your way</dt><dd>Name them OP1, ED2, OP1-Full or OP1-MV, or keep AnimeThemes' own file names. Most video and audio formats work, from WebM and MKV to FLAC and MP3.</dd></div>
+        <div><dt>Upgrade any time</dt><dd>Found a creditless version of an opening? Swap the file in and rescan that show. Your old file is kept, never deleted.</dd></div>
+        <div><dt>A good neighbour</dt><dd>Lookups are batched and cached for two weeks to keep the load off AnimeThemes' community servers, and you can switch them off entirely.</dd></div>
+      </dl>
+      <p class="plugin-note">Openings found from chapter markers work with any Jellyfin server. Everything else needs the free Anime OP/ED plugin on Jellyfin 12. Song details come from <a href="https://animethemes.moe" rel="noopener">AnimeThemes.moe</a>, a community project. Aster isn't affiliated with or endorsed by AnimeThemes.</p>
+      <p class="plugin-note"><a href="#episode-shot">See an episode page</a> · <a href="#opening-shot">See an opening card</a></p>
+    </div>
+  </section>
+
+  <section class="section spotlight" id="disc">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Disc menus</p>
+        <h2>The menu comes back</h2>
+        <p class="spot-lede">Ripping a disc keeps the movie and throws away the menu. Aster puts it back.</p>
+        <p>Remember the Play Movie, Scene Selection and Special Features screen that made a disc feel like a release? Disc menus recreate it for the films in your Jellyfin library, with backgrounds, music and transitions, and drive it all from your remote.</p>
+      </div>
+
+      <figure class="video-demo">
+        <div class="frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/Sxa86h8JKaA?rel=0" title="Aster Disc Menus" loading="lazy"
+                  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <figcaption>See it in action: a disc menu for <em>Big Buck Bunny</em>, the free open movie from the Blender Foundation.</figcaption>
+      </figure>
+
+      <div class="spot-how">
+        <div>
+          <h3>Linked for you</h3>
+          <p>A menu finds its film in your library by its TMDB or IMDb id, and links the extras by type and length. Drop the menu in and it's ready, with no file paths to fill in.</p>
+        </div>
+        <div>
+          <h3>Made to be shared</h3>
+          <p>A menu is a small file of layout and ids only: no file names, no server details, never code. Browse the community catalogue and install a menu with one click. Your library is never sent anywhere.</p>
+        </div>
+        <div>
+          <h3>Build your own</h3>
+          <p>Have the plugin draft a menu from a film's real extras and chapters, then refine it in the Menu Editor in your Jellyfin dashboard, with a live preview as you go.</p>
+        </div>
+      </div>
+
+      <h3 class="spot-sub">Everything the disc did</h3>
+      <dl class="spot-list">
+        <div><dt>Scene selection</dt><dd>Chapter menus are built from the film's own chapters, with thumbnails when Jellyfin has them.</dd></div>
+        <div><dt>Play All</dt><dd>Play the feature, any extra, or a whole run of extras in order, straight from the menu.</dd></div>
+        <div><dt>Backgrounds that move</dt><dd>Use the film's artwork, a TMDB backdrop, your own image, a flat colour, or the trailer looping behind the buttons, with a different look on every page.</dd></div>
+        <div><dt>Music and motion</dt><dd>Loop background music or the film's theme song, add button sounds, and fade, slide, zoom or wipe between pages.</dd></div>
+        <div><dt>Back to the menu</dt><dd>When the film or an extra ends, you land back on the menu, just like the disc.</dd></div>
+        <div><dt>Room for every extra</dt><dd>Long special features lists page themselves, with a More button when a submenu runs over.</dd></div>
+        <div><dt>Disc-style layouts</dt><dd>Place buttons anywhere on screen, layer banners and panels, and style the text to match the original release.</dd></div>
+        <div><dt>One menu, any app</dt><dd>Menus are plain, portable files built to an open format, so a menu made once can work in any Jellyfin app that supports it.</dd></div>
+      </dl>
+      <p class="plugin-note">Disc menus need the free Aster Disc plugin (early alpha) on a Jellyfin 12 server. The plugin stores your menus and serves them to Aster.</p>
+      <p class="plugin-note"><a href="#disc-menu-shot">See a disc menu</a></p>
+    </div>
+  </section>
+
+  <section class="section" id="screenshots">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Screenshots</p>
+        <h2>See it on the big screen</h2>
+      </div>
+      <div class="shots">
+        <figure class="shot shot-wide" id="home-shot">
+          <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="Aster home screen, featured shows">
+            <img class="is-active" src="screenshots/home.webp" width="1672" height="941" loading="lazy" decoding="async"
+                 alt="Aster's home screen on Apple TV featuring Nova Rangers, season 1 episode 9, Borrowed Time: 2026, TV-14, 24 minutes, HD, rated 8.9, with a Resume button showing 17 minutes left.">
+            <img src="screenshots/home-2.webp" width="1672" height="941" loading="lazy" decoding="async"
+                 alt="Aster's home screen featuring Ghost Circuit, season 1 episode 5, Rain in the Machine: 2026, TV-14, 25 minutes, HD, rated 8.5, with a Resume button showing 19 minutes left.">
+            <img src="screenshots/home-3.webp" width="1672" height="941" loading="lazy" decoding="async"
+                 alt="Aster's home screen featuring Witchlight Courier, season 1 episode 3, A Parcel for the Moon: 2026, TV-PG, 24 minutes, HD, rated 8.8, with a Resume button showing 12 minutes left.">
+          </div>
+          <div class="carousel-dots" role="group" aria-label="Choose a featured show">
+            <button type="button" id="home-dot-1" aria-label="Nova Rangers" aria-pressed="true"></button>
+            <button type="button" id="home-dot-2" aria-label="Ghost Circuit" aria-pressed="false"></button>
+            <button type="button" id="home-dot-3" aria-label="Witchlight Courier" aria-pressed="false"></button>
+          </div>
+          <figcaption>
+            <strong>Home.</strong> Pick up where you left off. The home screen features the shows you're in the middle of, one after another, with full-screen artwork, the episode's details and a Resume button that tells you how much is left. <span class="ai-note">AI-generated artwork. The shows pictured are fictional.</span>
+          </figcaption>
+        </figure>
+        <figure class="shot shot-wide" id="flipper-shot">
+          <img src="screenshots/channel-flipper.webp" width="1672" height="941" loading="lazy" decoding="async"
+               alt="Aster's channel flipper over a playing show. The focused channel, 3 Starwave, shows Nova Rangers, season 1 episode 8, The Silent Beacon, from 1:11 to 1:23 PM with 5 minutes left, plus Go to Episode and Press Select to Watch. A row below lists channels 1, 2, 3, 100 and 101 with what each is playing and its progress.">
+          <figcaption>
+            <strong>Flip channels.</strong> Browse every channel without leaving what you're watching. Each one shows what's on and how far along it is. Press Select to tune in, or go straight to that episode in your library.
+            <span class="shot-tag">Channels</span> <span class="ai-note">AI-generated artwork. The shows pictured are fictional.</span>
+          </figcaption>
+        </figure>
+        <figure class="shot" id="episode-shot">
+          <img src="screenshots/episode-page.webp" width="1672" height="941" loading="lazy" decoding="async"
+               alt="An episode page in Aster for Nova Rangers, season 1 episode 8, The Silent Beacon: 2026, TV-14, 26 minutes, HD, rated 8.7, with a description, buttons for Play, favourite, watched, more, Watch OP and Watch ED, and a Cast and Crew row.">
+          <figcaption>
+            <strong>Episode pages.</strong> Artwork, rating, runtime and cast at a glance. When a show has themes, Watch OP and Watch ED play that episode's opening or ending on their own.
+            <span class="shot-tag">Watch OP/ED · Plugin optional</span> <span class="ai-note">AI-generated artwork. The shows pictured are fictional.</span>
+          </figcaption>
+        </figure>
+        <figure class="shot" id="opening-shot">
+          <img src="screenshots/opening-card.webp" width="1672" height="941" loading="lazy" decoding="async"
+               alt="Aster on Apple TV playing an anime opening's music video. A card in the lower left reads: Opening 1, Starfall, by Lumina//, from Astral Circuit, episodes 1 to 12.">
+          <figcaption>
+            <strong>Opening cards.</strong> Every opening and ending plays with its song title, artist and episode range. Switch between the TV version, the full song and the official music video.
+            <span class="shot-tag">Anime OP/ED plugin</span> <span class="ai-note">AI-generated artwork. The shows pictured are fictional.</span>
+          </figcaption>
+        </figure>
+        <figure class="shot shot-wide" id="disc-menu-shot">
+          <img src="screenshots/disc-menu.webp" width="1672" height="941" loading="lazy" decoding="async"
+               alt="Aster on Apple TV showing a disc menu for Ember Crown, The Complete First Season, with Play Feature, Chapters and Disc Extras in an ornate gold menu bar.">
+          <figcaption>
+            <strong>Disc menus.</strong> Open a film or season the way the disc did, with its own menu art. Play the feature, jump to a chapter, or browse the extras.
+            <span class="shot-tag">Disc menus plugin</span> <span class="ai-note">AI-generated artwork. The shows pictured are fictional.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="platforms">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Platforms</p>
+        <h2>On the screens you watch</h2>
+      </div>
+      <div class="platforms">
+        <div class="platform"><span>Apple TV</span><span class="pill ok">Available</span></div>
+        <div class="platform"><span>iPhone &amp; iPad</span><span class="pill ok">Available</span></div>
+        <div class="platform"><span>Mac</span><span class="pill soon">Coming soon</span></div>
+        <div class="platform"><span><a href="thanks.html?get=linux">Linux</a><small>x64 and ARM64: .deb, .rpm, Arch, Flatpak</small></span><span class="pill beta-pill">Beta</span></div>
+        <div class="platform"><span>Windows<small>Same features as Linux</small></span><span class="pill soon">Coming soon</span></div>
+        <div class="platform"><span>Android</span><span class="pill soon">Coming soon</span></div>
+        <div class="platform"><span>Android TV</span><span class="pill soon">Coming soon</span></div>
+      </div>
+      <h3 class="spot-sub">Servers</h3>
+      <div class="platforms">
+        <div class="platform"><span>Jellyfin</span><span class="pill ok">Available</span></div>
+        <div class="platform"><span>Emby</span><span class="pill ok">Most features</span></div>
+        <div class="platform"><span>Plex</span><span class="pill ok">Most features</span></div>
+      </div>
+      <p class="plugin-note">Emby and Plex have most features, and more will be added in later releases. Anime openings and disc menus are built for Jellyfin, and Channels work on Jellyfin and Plex (on Plex, with the <a href="https://channels.astermediaplayer.com/">Channel Builder</a>). <a href="features.html">Compare every feature</a>.</p>
+
+    </div>
+  </section>
+
+  <section class="section" id="donate">
+    <div class="wrap">
+      <div class="love-card">
+        <svg class="love-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.7 7.9 3.6 4.5 7 4.5c2.1 0 3.6 1.2 5 3 1.4-1.8 2.9-3 5-3 3.4 0 5.3 3.4 4.2 6.6-1.7 4.8-9.2 9.4-9.2 9.4z"/></svg>
+        <h2>Made for the love of it.</h2>
+        <p>Aster exists because of the generosity of the open-source community, especially the developers behind Jellyfin.</p>
+        <p>I considered charging for Aster's unique features, but decided to follow their example. <strong>Everything is free and open-source. No subscriptions. No locked features. Ever.</strong></p>
+        <p>If Aster brings you a little joy, consider supporting its development. If not, that's okay too. Enjoy it, share it, and make it your own.</p>
+        <p class="love-story"><a href="story.html">Read why Aster is free</a></p>
+        <hr>
+        <h3>Support continued development</h3>
+        <!-- Tiers go to Ko-fi. Ko-fi can't pre-fill an amount, so the coffee price there is set to $5 to make these 1×, 2× and 3×. -->
+        <div class="tiers">
+          <a class="tier" href="https://ko-fi.com/Y7C12AHTH3" target="_blank" rel="noopener"><strong>$5</strong><span>A little thanks</span></a>
+          <a class="tier" href="https://ko-fi.com/Y7C12AHTH3" target="_blank" rel="noopener"><strong>$10</strong><span>Buy me a coffee</span></a>
+          <a class="tier" href="https://ko-fi.com/Y7C12AHTH3" target="_blank" rel="noopener"><strong>$15</strong><span>Keep it growing</span></a>
+        </div>
+        <p class="love-fine">Optional contributions through Ko-fi, where you choose the amount. Every feature stays free.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="privacy">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Privacy</p>
+        <h2>Between you and your server</h2>
+      </div>
+      <div class="privacy-points">
+        <div><h3>No account with us</h3><p>You sign in to your own Jellyfin or Emby server. There is no Aster account to create.</p></div>
+        <div><h3>No tracking</h3><p>Aster has no analytics or advertising SDKs. What you watch is recorded only on your server.</p></div>
+        <div><h3>Your media stays home</h3><p>Video streams straight from your server to your device. Nothing passes through us.</p></div>
+      </div>
+      <p class="plugin-note"><a href="privacy.html">Read the full privacy policy</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Aster Media Player. Not affiliated with Jellyfin, Emby or Plex.</span>
+    <nav aria-label="Footer">
+      <a href="story.html">Why it's free</a>
+      <a href="https://github.com/AsterMediaPlayer/Aster-Media-Player">Source code</a>
+      <a href="index.html#donate">Donate</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+<script>
+// Home screenshot carousel: crossfades through the featured shows like the app's home row.
+// Auto-advances only while on screen, not hovered/focused, and never with reduced motion.
+(function () {
+  var box = document.querySelector("[data-carousel]");
+  if (!box) return;
+  var slides = box.querySelectorAll("img");
+  var dots = box.parentNode.querySelectorAll(".carousel-dots button");
+  var current = 0, timer = null, visible = false, paused = false;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function show(i) {
+    current = (i + slides.length) % slides.length;
+    slides.forEach(function (s, n) { s.classList.toggle("is-active", n === current); });
+    dots.forEach(function (d, n) { d.setAttribute("aria-pressed", n === current ? "true" : "false"); });
+  }
+  function schedule() {
+    clearInterval(timer);
+    if (!reduce && visible && !paused && !document.hidden) timer = setInterval(function () { show(current + 1); }, 5000);
+  }
+  dots.forEach(function (d, n) { d.addEventListener("click", function () { show(n); schedule(); }); });
+  box.parentNode.addEventListener("mouseenter", function () { paused = true; schedule(); });
+  box.parentNode.addEventListener("mouseleave", function () { paused = false; schedule(); });
+  box.parentNode.addEventListener("focusin", function () { paused = true; schedule(); });
+  box.parentNode.addEventListener("focusout", function () { paused = false; schedule(); });
+  document.addEventListener("visibilitychange", schedule);
+  function warm() { slides.forEach(function (s) { s.loading = "eager"; }); }
+  if ("IntersectionObserver" in window) {
+    // rootMargin: start loading the hidden slides a little before the carousel scrolls into view.
+    new IntersectionObserver(function (e) { if (e[0].isIntersecting) warm(); }, { rootMargin: "400px" }).observe(box);
+    new IntersectionObserver(function (e) { visible = e[0].isIntersecting; schedule(); }, { threshold: 0.4 }).observe(box);
+  } else { warm(); visible = true; schedule(); }
+})();
+</script>
+<!-- Ko-fi floating "Support me" button (added 2026-11-11) -->
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  kofiWidgetOverlay.draw('Y7C12AHTH3', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Support me',
+    'floating-chat.donateButton.background-color': '#794bc4',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Link MyAnimeList to Aster</title>
+<meta name="description" content="The code that links your MyAnimeList account to Aster Tracking on your Jellyfin server.">
+<!-- Where MyAnimeList sends people after they approve Aster Tracking; not something to find in search results. -->
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" type="image/png" sizes="32x32" href="../../brand/icon-32.png">
+<link rel="apple-touch-icon" href="../../brand/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>img{max-width:100%;height:auto}</style>
+<link rel="stylesheet" href="../../styles.css?v=202610241516">
+<style>
+  [hidden] { display: none !important; }
+  .code-box { margin-top: 20px; padding: 18px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+  .code-box textarea { width: 100%; min-height: 7.5em; font-family: var(--font-mono, "IBM Plex Mono", monospace); font-size: var(--step--1); word-break: break-all; resize: vertical; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: transparent; color: var(--ink); box-sizing: border-box; }
+  .code-box .btn { margin-top: 12px; }
+  .note { color: var(--muted); font-size: var(--step--1); margin-top: 10px; }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html"><img src="../../brand/aster-logo-360.webp" width="360" height="111" alt="Aster Media Player"></a>
+  </div>
+</header>
+<main class="doc">
+  <h1>Link MyAnimeList</h1>
+
+  <section id="got" hidden>
+    <p>Copy this code and paste it into <strong>Aster Tracking</strong> on your Jellyfin server's dashboard, where you
+      started linking, then press <strong>Finish linking</strong>.</p>
+    <div class="code-box">
+      <textarea id="code" readonly aria-label="Your code"></textarea>
+      <button class="btn" id="copy" type="button">Copy code</button>
+      <p class="note">The code works only with the server that asked for it, and only for a few minutes. Nothing is
+        sent to or kept by this site.</p>
+    </div>
+  </section>
+
+  <section id="refused" hidden>
+    <p>MyAnimeList didn't give a code<span id="why"></span>. Go back to your Jellyfin dashboard and press
+      <strong>Link MyAnimeList</strong> again.</p>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Aster Media Player. Not affiliated with Jellyfin, Emby or Plex.</span>
+  </div>
+</footer>
+<script>
+  // The code is only read from the address and shown: this page sends it nowhere.
+  (function () {
+    var query = new URLSearchParams(location.search);
+    var code = query.get('code');
+    if (code) {
+      document.getElementById('code').value = code;
+      document.getElementById('got').hidden = false;
+      var button = document.getElementById('copy');
+      button.addEventListener('click', function () {
+        var box = document.getElementById('code');
+        box.select();
+        var done = function () { button.textContent = 'Copied'; };
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(code).then(done, function () { document.execCommand('copy'); done(); });
+        } else {
+          document.execCommand('copy');
+          done();
+        }
+      });
+    } else {
+      var error = query.get('error');
+      if (error) { document.getElementById('why').textContent = ' (' + (query.get('message') || error) + ')'; }
+      document.getElementById('refused').hidden = false;
+    }
+  })();
+</script>
+</body>
+</html>

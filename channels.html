@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aster Channels Guide</title>
+<meta name="description" content="How to make TV channels in Aster Media Player from your Jellyfin playlists, with every channel tag explained: modes, sources, the corner logo and commercial breaks.">
+<link rel="icon" type="image/png" sizes="32x32" href="brand/icon-32.png">
+<link rel="apple-touch-icon" href="brand/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>img{max-width:100%;height:auto}</style>
+<link rel="stylesheet" href="styles.css?v=202611121500">
+<style>
+  .doc h3 { font-size: var(--step-0); margin-top: 28px; margin-bottom: 8px; }
+  .toc { margin-top: 20px; padding: 16px 20px; border: 1px solid var(--line); border-radius: var(--radius); }
+  .toc ol { margin: 8px 0 0; padding-left: 1.2rem; display: grid; gap: 4px; }
+  .tag-list { display: block; margin-top: 12px; padding: 12px 14px; border-radius: 8px; background: var(--petal-soft);
+    font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.7; white-space: pre; overflow-x: auto; }
+  .tag-table { width: 100%; border-collapse: collapse; font-size: var(--step--1); min-width: 36rem; }
+  .tag-table th, .tag-table td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  .tag-table thead th { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .tag-table tbody th { font-family: var(--font-mono); font-weight: 600; font-size: 0.82rem; white-space: nowrap; }
+  .tag-table td:last-child { color: var(--muted); }
+  .tag-table td:last-child code, .tag-table td p code { white-space: nowrap; }
+  .tag-table td p + p { margin-top: 6px; }
+  /* Phones: each row becomes a card (tag, then what it does, then values) instead of a sideways-scrolling table. */
+  @media (max-width: 640px) {
+    .tag-table { min-width: 0; }
+    .tag-table thead { display: none; }
+    .tag-table, .tag-table tbody, .tag-table tr, .tag-table th, .tag-table td { display: block; width: auto; }
+    .tag-table tr { padding-block: 14px; border-bottom: 1px solid var(--line); }
+    .tag-table th, .tag-table td { padding: 0; border: 0; }
+    .tag-table tbody th { white-space: normal; overflow-wrap: anywhere; margin-bottom: 6px; color: var(--petal); }
+    .tag-table td + td { margin-top: 8px; font-size: 0.95em; }
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="brand/aster-logo-360.webp" width="360" height="111" alt="Aster Media Player"></a>
+    <nav class="nav" aria-label="Main">
+      <a href="features.html">Features</a>
+      <a href="channels.html" aria-current="page">Channels</a>
+      <a href="anime-themes.html">Anime</a>
+      <a href="disc-menus.html">Disc Menus</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="doc">
+  <div class="wrap">
+    <p class="eyebrow">Guide</p>
+    <h1>Making TV channels</h1>
+    <p class="updated">For Jellyfin and Plex servers</p>
+
+    <div class="callout">
+      <p><strong>In short:</strong> a channel is a Jellyfin video playlist with a few tags on it. Tag a playlist <code>aster:channel</code> and <code>aster:number=101</code>, and Aster plays it like live TV on channel 101, on a schedule every device sees the same.</p>
+      <p><strong>On Plex?</strong> The same settings go in the playlist's description instead of its tags. The <a href="https://channels.astermediaplayer.com/">Channel Builder</a> writes them for you: see <a href="#plex">Channels on Plex</a>.</p>
+    </div>
+
+    <nav class="toc" aria-label="On this page">
+      <strong>On this page</strong>
+      <ol>
+        <li><a href="#first-channel">Make your first channel</a></li>
+        <li><a href="#plex">Channels on Plex</a></li>
+        <li><a href="#how-tags-work">How channel tags work</a></li>
+        <li><a href="#basics">The basics</a></li>
+        <li><a href="#schedule">How a channel picks what plays</a></li>
+        <li><a href="#sources">Filling a channel automatically</a></li>
+        <li><a href="#corner-logo">The corner logo</a></li>
+        <li><a href="#breaks">Commercial breaks</a></li>
+        <li><a href="#examples">Example channels</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="first-channel">Make your first channel</h2>
+    <p>Any video playlist can become a channel. Every way of making one writes the same tags to the same playlist, so you can mix them, and switch between them whenever you like.</p>
+
+    <h3>In Aster</h3>
+    <p>Create and edit channels from the Channels screen. Aster writes the tags for you.</p>
+
+    <h3>In the Jellyfin dashboard</h3>
+    <p>Install the free <a href="support.html#plugins">Aster Channels plugin</a>, then open <strong>Dashboard ▸ Channels</strong> and choose <strong>New Channel</strong>. Start from a show, a genre, a network, a collection or one of your playlists. Pick a channel in the list to change its settings, and drag channels up or down to renumber them.</p>
+    <p>The plugin is optional. If you uninstall it, your channels keep working.</p>
+
+    <h3>By hand, with tags</h3>
+    <ol class="steps">
+      <li>In Jellyfin, make a playlist and add the episodes or movies you want on the channel. A playlist can also start empty and be <a href="#sources">filled automatically</a> by a genre, network or collection.</li>
+      <li>Open the playlist, choose <strong>Edit Metadata</strong>, and find <strong>Tags</strong>.</li>
+      <li>Add the tag <code>aster:channel</code>, and a channel number such as <code>aster:number=101</code>. Save.</li>
+      <li>Open Channels in Aster. The playlist is now channel 101.</li>
+    </ol>
+    <p>Other people on your server only see a channel if its playlist is shared with them or public. Channels made with the plugin's New Channel are public.</p>
+
+    <h2 id="plex">Channels on Plex</h2>
+    <p>Plex playlists don't have tags, so on Plex a channel's settings go in the playlist's <strong>description</strong> (Plex calls it the Summary), as one line: <code>aster:channel, aster:number=7, aster:mode=shuffle</code>. They're the same settings as below, separated by commas.</p>
+    <p>The easiest way is the <a href="https://channels.astermediaplayer.com/">Channel Builder</a>: fill in a form, then copy the line into the playlist's description in Plex (open the playlist, choose <strong>Edit</strong>, and paste). Sign in with Plex there to pick names from your library, see and change what's in a playlist, or create a new channel in one step.</p>
+    <p>Commercial breaks aren't available on Plex channels yet, and a Plex playlist is only seen by the account that made it.</p>
+
+    <h2 id="how-tags-work">How channel tags work</h2>
+    <p>Every channel setting is a tag on the playlist, written as <code>aster:</code>, the setting's name, <code>=</code> and a value:</p>
+    <code class="tag-list">aster:channel
+aster:number=101
+aster:mode=blocks
+aster:genre=Comedy</code>
+    <ul>
+      <li>Upper and lower case don't matter: <code>aster:Mode=Blocks</code> works too.</li>
+      <li>A setting you leave out uses its default, shown in the tables below. So does a value Aster doesn't understand, such as <code>aster:mode=random</code>.</li>
+      <li>Some settings take a list. You can add the tag once per item, or separate items with commas in one tag, as noted below.</li>
+      <li>Tags from before the app was renamed, starting <code>asterfin:</code>, still work.</li>
+      <li>Your own tags on the playlist, without <code>aster:</code>, are left alone.</li>
+    </ul>
+
+    <h2 id="basics">The basics</h2>
+    <div class="table-wrap">
+      <table class="tag-table">
+        <thead><tr><th scope="col">Tag</th><th scope="col">What it does</th><th scope="col">Values</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">aster:channel</th><td>Makes the playlist a channel. Set it to <code>off</code> to hide the channel without losing its settings; turn it back on and everything comes back.</td><td>On its own means on. <code>off</code> hides it.</td></tr>
+          <tr><th scope="row">aster:number</th><td>The channel number, like 4 or 101. The guide lists channels in number order. Channels without a number go after the highest one, in name order. Try not to give two channels the same number.</td><td>A whole number above 0.</td></tr>
+          <tr><th scope="row">aster:channel-name</th><td>What the channel is called in the guide.</td><td>Any text. Default: the playlist's name.</td></tr>
+          <tr><th scope="row">aster:group</th><td>Puts the channel in a group in the guide, such as Kids or Movies. Groups appear in order of their lowest channel number.</td><td>Any text. Default: no group.</td></tr>
+          <tr><th scope="row">aster:logo</th><td>Uses the playlist's picture as the channel's logo in the guide. To change the logo, change the playlist's image in Jellyfin.</td><td><code>on</code> or <code>off</code>. Default: <code>off</code>.</td></tr>
+          <tr><th scope="row">aster:user</th><td>Only these people see the channel in Aster. This only hides it in Aster: whoever the playlist is shared with can still open it in Jellyfin.</td><td>Jellyfin user names, separated by commas. Default: everyone.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="schedule">How a channel picks what plays</h2>
+    <p>A channel's schedule is worked out the same way on every device, so everyone watching sees the same thing at the same time, just like real TV.</p>
+    <div class="table-wrap">
+      <table class="tag-table">
+        <thead><tr><th scope="col">Tag</th><th scope="col">What it does</th><th scope="col">Values</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">aster:mode</th><td>
+            <p>How the channel picks what plays next:</p>
+            <p><code>rotation</code>: shows take turns, one episode each.</p>
+            <p><code>blocks</code>: shows take turns, a few episodes in a row each.</p>
+            <p><code>shuffle</code>: every movie and episode on its own, in a new order each day.</p>
+            <p><code>sequential</code>: the playlist's own order, top to bottom, then round again.</p>
+            <p><code>airdate</code>: everything in the order it first aired, across every show.</p>
+          </td><td>Default: <code>rotation</code>.</td></tr>
+          <tr><th scope="row">aster:blocks</th><td>In <code>blocks</code> mode, how many episodes of a show play before the next show gets a turn. Each time, the channel picks a number between the two you give.</td><td>A range like <code>3-6</code>, or one number. 1 to 20. Default: <code>2-4</code>.</td></tr>
+          <tr><th scope="row">aster:reshuffle</th><td>How long a shuffled order lasts before the channel mixes it up again. With <code>day</code>, tomorrow's lineup is different from today's. Weeks start on Monday, and months on the 1st.</td><td><code>day</code>, <code>week</code> or <code>month</code>. Default: <code>day</code>.</td></tr>
+          <tr><th scope="row">aster:seed</th><td>Don't like the lineup? Change this number to deal a brand new one, for every device at once.</td><td>A whole number. Default: <code>0</code>.</td></tr>
+          <tr><th scope="row">aster:weight</th><td>Makes a show come up more often. <code>Friends:2</code> gives Friends twice as many turns as the other shows. Add one tag per show.</td><td>The show's name, a colon and 1 to 5.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="sources">Filling a channel automatically</h2>
+    <p>Besides what's in the playlist itself, a channel can add everything from a genre, a network or a collection. New things you add to your library show up on the channel by themselves. The other settings here narrow down what the channel plays.</p>
+    <div class="table-wrap">
+      <table class="tag-table">
+        <thead><tr><th scope="col">Tag</th><th scope="col">What it does</th><th scope="col">Values</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">aster:genre</th><td>Adds every movie and show in a genre, like Horror or Comedy. Add more than one to mix them.</td><td>Genre names, separated by commas.</td></tr>
+          <tr><th scope="row">aster:type</th><td>Whether the genres add movies, shows, or both.</td><td><code>all</code>, <code>movies</code> or <code>shows</code>. Default: <code>all</code>.</td></tr>
+          <tr><th scope="row">aster:network</th><td>Adds every show from a TV network or movie studio, like NBC or Pixar.</td><td>One name per tag, since studio names can contain commas.</td></tr>
+          <tr><th scope="row">aster:collection</th><td>Adds everything in one of your Jellyfin collections, like a Star Wars collection.</td><td>One name per tag.</td></tr>
+          <tr><th scope="row">aster:library</th><td>Only takes titles from these libraries.</td><td>Library names, separated by commas. Default: all libraries.</td></tr>
+          <tr><th scope="row">aster:years</th><td>Only plays things that came out between these years. Handy for an 80s or 90s channel.</td><td>A range like <code>1980-1989</code>, or one year. Default: any year.</td></tr>
+          <tr><th scope="row">aster:rating</th><td>Only plays things with these age ratings, like G and PG for a kids' channel.</td><td>Ratings, separated by commas. Default: any rating.</td></tr>
+          <tr><th scope="row">aster:min-length</th><td>Skips anything shorter than this.</td><td>Minutes, 1 to 600. Default: no limit.</td></tr>
+          <tr><th scope="row">aster:max-length</th><td>Skips anything longer than this. For example, <code>30</code> keeps movies off a cartoon channel.</td><td>Minutes, 1 to 600. Default: no limit.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="corner-logo">The corner logo</h2>
+    <p>Like real TV channels, a channel can show its logo faintly in a corner while you watch. It uses the playlist's picture.</p>
+    <div class="table-wrap">
+      <table class="tag-table">
+        <thead><tr><th scope="col">Tag</th><th scope="col">What it does</th><th scope="col">Values</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">aster:bug</th><td>Shows the logo in a corner while the channel plays.</td><td><code>on</code> or <code>off</code>. Default: <code>off</code>.</td></tr>
+          <tr><th scope="row">aster:bug-location</th><td>Which corner the logo sits in.</td><td><code>top-left</code>, <code>top-right</code>, <code>bottom-left</code> or <code>bottom-right</code>. Default: <code>bottom-right</code>.</td></tr>
+          <tr><th scope="row">aster:bug-size</th><td>How big the logo is. 100% is the normal size.</td><td>25% to 300%. Default: <code>100%</code>.</td></tr>
+          <tr><th scope="row">aster:bug-opacity</th><td>How see-through the logo is. Lower is more see-through; 100% is solid.</td><td>5% to 100%. Default: <code>45%</code>.</td></tr>
+          <tr><th scope="row">aster:bug-hide</th><td>Hides the logo after this many seconds. It comes back when you tune in again or the next programme starts.</td><td>1 to 3600 seconds, or <code>off</code>. Default: <code>off</code> (it stays).</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="breaks">Commercial breaks</h2>
+    <p>Breaks are short clips that play between programmes, like commercials on real TV. Setting them up takes two steps: a playlist of clips, and a few tags on the channel.</p>
+
+    <h3>1. Make a filler playlist</h3>
+    <ol class="steps">
+      <li>Make a Jellyfin playlist of short clips, and tag the playlist <code>aster:filler</code>.</li>
+      <li>Tag each clip in it with what it is. A clip without one of these tags is never played.</li>
+    </ol>
+    <div class="table-wrap">
+      <table class="tag-table">
+        <thead><tr><th scope="col">Clip tag</th><th scope="col">What it is</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">aster:commercial</th><td>Ads, like real TV commercials.</td></tr>
+          <tr><th scope="row">aster:promo</th><td>Ads for other shows, like "Coming up next…".</td></tr>
+          <tr><th scope="row">aster:trailer</th><td>Movie trailers.</td></tr>
+          <tr><th scope="row">aster:bumper</th><td>Short "We'll be right back" and "Now back to the show" clips.</td></tr>
+          <tr><th scope="row">aster:interstitial</th><td>Anything else short: music videos, cartoon shorts, public service ads. These also fill gaps when lining programmes up to the clock.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>2. Turn on breaks for a channel</h3>
+    <p>A channel only has breaks once it names a filler playlist. The other break settings do nothing without one.</p>
+    <div class="table-wrap">
+      <table class="tag-table">
+        <thead><tr><th scope="col">Tag</th><th scope="col">What it does</th><th scope="col">Values</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">aster:filler-playlists</th><td>Which filler playlist the breaks take their clips from. Add the tag again for each extra playlist.</td><td>One playlist name per tag. Default: no breaks.</td></tr>
+          <tr><th scope="row">aster:filler-types</th><td>Which kinds of clips this channel plays in its breaks.</td><td><code>commercials</code>, <code>promos</code>, <code>trailers</code>, <code>bumpers</code>, <code>interstitials</code>, separated by commas, or <code>all</code>. Default: <code>all</code>.</td></tr>
+          <tr><th scope="row">aster:break-length</th><td>How many minutes of commercials play in each break.</td><td>0 to 30 minutes. Default: <code>2</code>.</td></tr>
+          <tr><th scope="row">aster:promo-count</th><td>How many promos play in each break.</td><td>0 to 5. Default: <code>1</code>.</td></tr>
+          <tr><th scope="row">aster:trailer-count</th><td>How many trailers play in each break.</td><td>0 to 5. Default: <code>1</code>.</td></tr>
+          <tr><th scope="row">aster:interstitial-count</th><td>How many interstitials play in each break.</td><td>0 to 5. Default: <code>1</code>.</td></tr>
+          <tr><th scope="row">aster:bumpers-at</th><td>Where the bumpers go: at the start of a break (<code>out</code>), at the end (<code>in</code>), or both.</td><td><code>both</code>, <code>out</code> or <code>in</code>. Default: <code>both</code>.</td></tr>
+          <tr><th scope="row">aster:break-every</th><td>How often a break comes. <code>1</code> means after every episode or movie; <code>3</code> means after every third.</td><td>1 to 10 programmes. Default: <code>1</code>.</td></tr>
+          <tr><th scope="row">aster:align</th><td>Makes programmes start at neat times, like 7:00 or 7:30, the way real TV does. The breaks stretch or shrink to fill the gap. <code>30</code> means on the hour and half hour.</td><td><code>5</code>, <code>10</code>, <code>15</code>, <code>20</code>, <code>30</code> or <code>60</code> minutes, or <code>off</code>. Default: <code>off</code>.</td></tr>
+          <tr><th scope="row">aster:align-fit</th><td>With <code>align</code> on: <code>best</code> uses whole clips and gets as close to the mark as it can, but never starts a programme late. <code>exact</code> cuts the last clip short so the programme starts right on the dot.</td><td><code>best</code> or <code>exact</code>. Default: <code>best</code>.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="examples">Example channels</h2>
+    <h3>Saturday morning cartoons</h3>
+    <p>An empty playlist that fills itself with 80s animation, with no movies, plus commercials from a filler playlist called Retro Ads, with shows starting on the half hour:</p>
+    <code class="tag-list">aster:channel
+aster:number=12
+aster:channel-name=Saturday Morning
+aster:group=Kids
+aster:mode=blocks
+aster:blocks=2-3
+aster:genre=Animation
+aster:type=shows
+aster:years=1980-1989
+aster:max-length=30
+aster:filler-playlists=Retro Ads
+aster:filler-types=commercials,bumpers
+aster:break-length=2
+aster:align=30</code>
+
+    <h3>Sitcom channel with a favourite</h3>
+    <p>A playlist of sitcoms you picked yourself, where Friends comes up twice as often, with the channel's logo in the corner:</p>
+    <code class="tag-list">aster:channel
+aster:number=4
+aster:mode=rotation
+aster:weight=Friends:2
+aster:logo=on
+aster:bug=on
+aster:bug-location=bottom-right</code>
+
+    <h3>Movie night</h3>
+    <p>Every Pixar film, shuffled into a new order each week, with a trailer before each one:</p>
+    <code class="tag-list">aster:channel
+aster:number=50
+aster:mode=shuffle
+aster:reshuffle=week
+aster:network=Pixar
+aster:filler-playlists=Trailers
+aster:filler-types=trailers
+aster:trailer-count=1</code>
+
+    <h2 id="troubleshooting">Troubleshooting</h2>
+    <div class="faq">
+      <details>
+        <summary>My channel doesn't show up in Aster.</summary>
+        <p>Check that the playlist has the tag <code>aster:channel</code> and not <code>aster:channel=off</code>. If you're signed in as someone else, the playlist has to be shared with them or public, and if the channel has <code>aster:user</code> tags, their name has to be in them. Channels work with Jellyfin and Plex servers, not Emby. On Plex, the settings go in the playlist's description: check it starts with <code>aster:channel</code>, or make it with the <a href="https://channels.astermediaplayer.com/">Channel Builder</a>.</p>
+      </details>
+      <details>
+        <summary>The breaks never play, or some clips are missing.</summary>
+        <p>The channel needs an <code>aster:filler-playlists</code> tag naming a playlist that's tagged <code>aster:filler</code>. Each clip in that playlist needs its own tag saying what it is, such as <code>aster:commercial</code>, and that kind has to be in the channel's <code>aster:filler-types</code>.</p>
+      </details>
+      <details>
+        <summary>A setting doesn't seem to do anything.</summary>
+        <p>A misspelled value falls back to the default, so check it against the tables above. In the Aster Channels plugin, the <strong>Tags</strong> section at the bottom of each channel shows exactly what's saved on the playlist.</p>
+      </details>
+      <details>
+        <summary>Two channels have the same number.</summary>
+        <p>Give one of them a different <code>aster:number</code>. In the plugin, you can drag channels up or down the list to renumber them.</p>
+      </details>
+    </div>
+
+    <p style="margin-top: 32px">Still stuck? See the <a href="support.html">support page</a> or email <a href="mailto:support@astermediaplayer.com">support@astermediaplayer.com</a>.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Aster Media Player. Not affiliated with Jellyfin, Emby or Plex.</span>
+    <nav aria-label="Footer">
+      <a href="story.html">Why it's free</a>
+      <a href="https://github.com/AsterMediaPlayer/Aster-Media-Player">Source code</a>
+      <a href="index.html#donate">Donate</a>
+      <a href="features.html">Features</a>
+      <a href="channels.html">Channels guide</a>
+      <a href="anime-themes.html">Anime guide</a>
+      <a href="disc-menus.html">Disc menus guide</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+<!-- Ko-fi floating "Support me" button (added 2026-11-11) -->
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  kofiWidgetOverlay.draw('Y7C12AHTH3', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Support me',
+    'floating-chat.donateButton.background-color': '#794bc4',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>
+</body>
+</html>

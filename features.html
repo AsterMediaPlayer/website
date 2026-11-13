@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aster Features by Platform</title>
+<meta name="description" content="What Aster Media Player does on Apple TV, iPhone, iPad, Mac, Android TV, Android phones and tablets, Windows and Linux, and which features work with Jellyfin, Emby and Plex.">
+<link rel="icon" type="image/png" sizes="32x32" href="brand/icon-32.png">
+<link rel="apple-touch-icon" href="brand/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>img{max-width:100%;height:auto}</style>
+<link rel="stylesheet" href="styles.css?v=202611121500">
+<style>
+  .doc .wrap { max-width: 64rem; }
+  /* Bigger section headings, with clear space above each one. */
+  .doc h2 { font-size: var(--step-2); margin-top: 72px; margin-bottom: 14px; }
+  .doc h3 { font-size: var(--step-1); margin-top: 56px; margin-bottom: 12px; }
+  .table-wrap + p, .table-wrap + .notes { margin-top: 14px; }
+  .toc { margin-top: 20px; padding: 16px 20px; border: 1px solid var(--line); border-radius: var(--radius); }
+  .toc ol { margin: 8px 0 0; padding-left: 1.2rem; display: grid; gap: 4px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 16px; color: var(--muted); font-size: var(--step--1); }
+
+  /* The feature matrix */
+  .matrix { width: 100%; border-collapse: collapse; font-size: var(--step--1); min-width: 52rem; }
+  .matrix th, .matrix td { padding: 11px 10px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  .matrix thead th { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); font-weight: 600; text-align: center; vertical-align: bottom; }
+  .matrix thead th:first-child { text-align: left; }
+  .matrix tbody th { text-align: left; font-weight: 400; color: var(--ink); }
+  .matrix td { text-align: center; width: 9.5%; }
+  .matrix td small { display: block; color: var(--muted); font-size: 0.85em; line-height: 1.3; }
+  .yes { color: var(--petal); font-weight: 700; font-size: 1.1em; }
+  .no { color: var(--muted); }
+  .partial { color: var(--ink); font-size: 0.88em; }
+  sup a { text-decoration: none; }
+  .notes { margin-top: 12px; padding-left: 1.2rem; color: var(--muted); font-size: var(--step--1); }
+
+  .servers { width: 100%; border-collapse: collapse; font-size: var(--step--1); min-width: 40rem; }
+  .servers th, .servers td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  .servers thead th { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .servers tbody th { white-space: nowrap; font-weight: 700; }
+  .servers td p + p { margin-top: 6px; }
+  .servers .not-yet { color: var(--muted); }
+
+
+  /* Phones: each feature becomes a card listing the platforms. */
+  @media (max-width: 720px) {
+    .matrix, .servers { min-width: 0; }
+    .matrix thead, .servers thead { display: none; }
+    .matrix, .matrix tbody, .matrix tr, .matrix th, .matrix td,
+    .servers, .servers tbody, .servers tr, .servers th, .servers td { display: block; width: auto; }
+    .matrix tr, .servers tr { padding-block: 14px; border-bottom: 1px solid var(--line); }
+    .matrix th, .matrix td, .servers th, .servers td { padding: 0; border: 0; }
+    .matrix tbody th { font-weight: 700; margin-bottom: 8px; }
+    .matrix tbody tr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 20px; }
+    .matrix tbody th { grid-column: 1 / -1; }
+    .matrix td { min-width: 0; text-align: right; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 6px; }
+    .matrix td::before { content: attr(data-label); color: var(--muted); text-align: left; flex: 1 1 auto; min-width: 0; }
+    .matrix td small { flex-basis: 100%; }
+    .matrix .partial { font-size: 0.8em; }
+    .servers tbody th { margin-bottom: 6px; color: var(--petal); }
+    .servers td + td { margin-top: 10px; }
+    .servers td::before { content: attr(data-label); display: block; font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 2px; }
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="brand/aster-logo-360.webp" width="360" height="111" alt="Aster Media Player"></a>
+    <nav class="nav" aria-label="Main">
+      <a href="features.html" aria-current="page">Features</a>
+      <a href="channels.html">Channels</a>
+      <a href="anime-themes.html">Anime</a>
+      <a href="disc-menus.html">Disc Menus</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="doc">
+  <div class="wrap">
+    <p class="eyebrow">Features</p>
+    <h1>What Aster does, on every screen</h1>
+    <p class="updated">At release · Apple, Android, Windows and Linux</p>
+
+    <div class="callout">
+      <p><strong>In short:</strong> Aster is the same app on Apple TV, iPhone, iPad, Mac, Android TV, Android phones and tablets, Windows and Linux. Almost everything works everywhere. A few extras belong to one kind of device, like Top Shelf on Apple TV or casting from Android.</p>
+    </div>
+
+    <nav class="toc" aria-label="On this page">
+      <strong>On this page</strong>
+      <ol>
+        <li><a href="#platforms">Platforms and requirements</a></li>
+        <li><a href="#features">Features by platform</a></li>
+        <li><a href="#servers">Jellyfin, Emby and Plex</a></li>
+        <li><a href="#plugins">Companion plugins</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="platforms">Platforms and requirements</h2>
+    <div class="table-wrap">
+      <table class="servers">
+        <thead><tr><th scope="col">Platform</th><th scope="col">Devices</th><th scope="col">Requires</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Apple</th><td data-label="Devices">Apple TV, iPhone, iPad, Mac</td><td data-label="Requires">iOS and iPadOS 26.1, tvOS 26 or macOS 26, or later</td></tr>
+          <tr><th scope="row">Android</th><td data-label="Devices">Android TV, phones, tablets</td><td data-label="Requires">Android 8.0 or later</td></tr>
+          <tr><th scope="row">Desktop</th><td data-label="Devices">Windows, Linux</td><td data-label="Requires">Windows 10 (version 1809) or later, 64-bit; or Linux on x64 or ARM64 (the packages bring the mpv library)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="features">Features by platform</h2>
+    <p class="legend"><span><span class="yes">✓</span> Included</span><span><span class="no">—</span> Not on this platform at release</span></p>
+
+    <h3>Watching</h3>
+    <div class="table-wrap">
+      <table class="matrix">
+        <thead><tr><th scope="col">Feature</th><th scope="col">Apple TV</th><th scope="col">iPhone &amp; iPad</th><th scope="col">Mac</th><th scope="col">Android TV</th><th scope="col">Android phone &amp; tablet</th><th scope="col">Windows &amp; Linux</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Home shelves, libraries, title pages and search</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">Theme music and looping theme videos on title pages</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">Plays the original file, with every audio and subtitle track switchable</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">Styled ASS/SSA subtitles</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">Skip Intro, Skip Credits and Up Next</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">Scrub previews</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">Choose the quality, and drop it when playback stalls</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">Upcoming episodes</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">Add to Playlist</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">HDR10 and Dolby Vision</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="no">No</span><small>HDR plays as SDR<sup><a href="#n1">1</a></sup></small></td><td data-label="Android phone & tablet"><span class="no">No</span><small>HDR plays as SDR<sup><a href="#n1">1</a></sup></small></td><td data-label="Windows & Linux"><span class="no">No</span><small>HDR plays as SDR<sup><a href="#n1">1</a></sup></small></td></tr>
+          <tr><th scope="row">Dolby Atmos</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="no">No</span><small>surround, not Atmos<sup><a href="#n1">1</a></sup></small></td><td data-label="Android phone & tablet"><span class="no">No</span><small>surround, not Atmos<sup><a href="#n1">1</a></sup></small></td><td data-label="Windows & Linux"><span class="no">No</span><small>surround, not Atmos<sup><a href="#n1">1</a></sup></small></td></tr>
+          <tr><th scope="row">Picture in Picture</th><td data-label="Apple TV"><span class="no">—</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="no">—</span></td><td data-label="Android TV"><span class="no">—</span></td><td data-label="Android phone & tablet"><span class="no">—</span></td><td data-label="Windows & Linux"><span class="no">—</span></td></tr>
+          <tr><th scope="row">Cast to Chromecast</th><td data-label="Apple TV"><span class="no">—</span></td><td data-label="iPhone & iPad"><span class="no">—</span></td><td data-label="Mac"><span class="no">—</span></td><td data-label="Android TV"><span class="no">—</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="no">—</span></td></tr>
+          <tr><th scope="row">Downloads for watching offline</th><td data-label="Apple TV"><span class="no">—</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="no">—</span></td><td data-label="Android TV"><span class="no">—</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="no">—</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ol class="notes">
+      <li id="n1">Coming in a future release.</li>
+    </ol>
+
+    <h3>Anime</h3>
+    <div class="table-wrap">
+      <table class="matrix">
+        <thead><tr><th scope="col">Feature</th><th scope="col">Apple TV</th><th scope="col">iPhone &amp; iPad</th><th scope="col">Mac</th><th scope="col">Android TV</th><th scope="col">Android phone &amp; tablet</th><th scope="col">Windows &amp; Linux</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Anime libraries (Shoko, AniDB) kept apart from movies and TV</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">Openings and endings, with a song card (song, artists, series)</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>See the <a href="anime-themes.html">anime openings and endings guide</a> to set them up.</p>
+
+    <h3>Music and audiobooks</h3>
+    <div class="table-wrap">
+      <table class="matrix">
+        <thead><tr><th scope="col">Feature</th><th scope="col">Apple TV</th><th scope="col">iPhone &amp; iPad</th><th scope="col">Mac</th><th scope="col">Android TV</th><th scope="col">Android phone &amp; tablet</th><th scope="col">Windows &amp; Linux</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Albums, artists, playlists and songs, with shuffle, repeat and lyrics</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">Audiobooks, with your progress saved on the server</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">Audiobook chapters and playback speed</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">Download audiobooks, and Listen Ahead for streamed books</th><td data-label="Apple TV"><span class="no">—</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="no">—</span></td><td data-label="Android TV"><span class="no">—</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="no">—</span></td></tr>
+          <tr><th scope="row">Background audio and your device's media controls</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span><small>Windows media controls; MPRIS on Linux</small></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Live TV and Channels</h3>
+    <div class="table-wrap">
+      <table class="matrix">
+        <thead><tr><th scope="col">Feature</th><th scope="col">Apple TV</th><th scope="col">iPhone &amp; iPad</th><th scope="col">Mac</th><th scope="col">Android TV</th><th scope="col">Android phone &amp; tablet</th><th scope="col">Windows &amp; Linux</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Live TV guide, recordings and series rules</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">Channels: your playlists as scheduled TV channels</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>See the <a href="channels.html">channels guide</a> to make your own.</p>
+    <div class="callout">
+      <p><strong>On Plex? Use the <a href="https://channels.astermediaplayer.com/">Channel Builder</a>.</strong> A channel's settings live in the Plex playlist's description. The builder at <a href="https://channels.astermediaplayer.com/">channels.astermediaplayer.com</a> is a form that writes them for you: pick a number, what it plays (genres, networks, collections, years, ratings), how it's scheduled, and the corner logo, then copy one line into the playlist's description.</p>
+      <p>Sign in with Plex there, and it suggests names from your own library, shows what's in each playlist, and can save the settings, change what's in a playlist, or create a new channel for you, always after asking. Your sign-in stays in your browser and goes only to Plex.</p>
+    </div>
+
+    <h3>Disc menus</h3>
+    <div class="table-wrap">
+      <table class="matrix">
+        <thead><tr><th scope="col">Feature</th><th scope="col">Apple TV</th><th scope="col">iPhone &amp; iPad</th><th scope="col">Mac</th><th scope="col">Android TV</th><th scope="col">Android phone &amp; tablet</th><th scope="col">Windows &amp; Linux</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">DVD and Blu-ray style menus, with transitions, music and sounds</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Disc menus come from the free Aster Disc plugin. See the <a href="disc-menus.html">disc menus guide</a>.</p>
+
+    <h3>Made for each device</h3>
+    <div class="table-wrap">
+      <table class="matrix">
+        <thead><tr><th scope="col">Feature</th><th scope="col">Apple TV</th><th scope="col">iPhone &amp; iPad</th><th scope="col">Mac</th><th scope="col">Android TV</th><th scope="col">Android phone &amp; tablet</th><th scope="col">Windows &amp; Linux</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Top Shelf: Continue Watching, Next Up and recent channels</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="no">—</span></td><td data-label="Mac"><span class="no">—</span></td><td data-label="Android TV"><span class="no">—</span></td><td data-label="Android phone & tablet"><span class="no">—</span></td><td data-label="Windows & Linux"><span class="no">—</span></td></tr>
+          <tr><th scope="row">Built for the remote: focus, long-press and a side menu</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="no">—</span></td><td data-label="Mac"><span class="no">—</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="no">—</span></td><td data-label="Windows & Linux"><span class="no">—</span></td></tr>
+          <tr><th scope="row">Keyboard shortcuts and full-screen playback</th><td data-label="Apple TV"><span class="no">—</span></td><td data-label="iPhone & iPad"><span class="no">—</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="no">—</span></td><td data-label="Android phone & tablet"><span class="no">—</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">Links that open a title or start playing it (<code>aster://</code>)</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="no">—</span></td><td data-label="Android phone & tablet"><span class="no">—</span></td><td data-label="Windows & Linux"><span class="no">—</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Accounts and servers</h3>
+    <div class="table-wrap">
+      <table class="matrix">
+        <thead><tr><th scope="col">Feature</th><th scope="col">Apple TV</th><th scope="col">iPhone &amp; iPad</th><th scope="col">Mac</th><th scope="col">Android TV</th><th scope="col">Android phone &amp; tablet</th><th scope="col">Windows &amp; Linux</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Several servers and users, with an optional lock after time away</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">Quick Connect sign-in (Jellyfin)</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">Settings that follow you between devices (Jellyfin, Emby)</th><td data-label="Apple TV"><span class="yes">✓</span></td><td data-label="iPhone & iPad"><span class="yes">✓</span></td><td data-label="Mac"><span class="yes">✓</span></td><td data-label="Android TV"><span class="yes">✓</span></td><td data-label="Android phone & tablet"><span class="yes">✓</span></td><td data-label="Windows & Linux"><span class="yes">✓</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="servers">Jellyfin, Emby and Plex</h2>
+    <p>Aster is built for Jellyfin, so everything on this page works with a Jellyfin server. Emby and Plex work too, with some differences.</p>
+    <div class="table-wrap">
+      <table class="servers">
+        <thead><tr><th scope="col">Server</th><th scope="col">Apple</th><th scope="col">Android</th><th scope="col">Windows &amp; Linux</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Jellyfin</th>
+            <td data-label="Apple">Everything on this page.</td>
+            <td data-label="Android">Everything on this page.</td>
+            <td data-label="Windows & Linux">Everything on this page.</td></tr>
+          <tr><th scope="row">Emby</th>
+            <td data-label="Apple"><p>Most features, and more will be added in later releases. Live TV needs Emby Premiere.</p><p class="not-yet">Not available: the Aster plugins, so no Channels, disc menus or OP/ED plugin features.</p></td>
+            <td data-label="Android"><p>Most features, and more will be added in later releases.</p><p class="not-yet">Not yet: Skip Credits. Live TV hasn't been tested.</p></td>
+            <td data-label="Windows & Linux"><p>Most features, and more will be added in later releases.</p></td></tr>
+          <tr><th scope="row">Plex</th>
+            <td data-label="Apple"><p>Movies and TV: browsing, playback, resume and watched status, skip markers (with Plex Pass, or from chapters) and anime song cards. Channels, made with the <a href="https://channels.astermediaplayer.com/">Channel Builder</a>.</p><p class="not-yet">Not yet: music, audiobooks, Live TV, playlists, Upcoming, downloads and favourites.</p></td>
+            <td data-label="Android"><p>Movies and TV. Channels, made with the <a href="https://channels.astermediaplayer.com/">Channel Builder</a>.</p><p class="not-yet">Not yet: music, photos, Live TV and scrub previews.</p></td>
+            <td data-label="Windows & Linux"><p>Movies and TV: browsing, playback, and skip markers or chapters. Channels, made with the <a href="https://channels.astermediaplayer.com/">Channel Builder</a>.</p><p class="not-yet">Not yet: music, Live TV and the Aster plugins.</p></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Jellyfin 10.10 or later is recommended. Aster is developed against Jellyfin 12.</p>
+
+    <h2 id="plugins">Companion plugins</h2>
+    <p>Free, optional plugins for your Jellyfin server add more to Aster. Install them from Aster's plugin repository, as the <a href="support.html#plugins">support page</a> explains.</p>
+    <ul>
+      <li><strong>Aster Disc:</strong> DVD and Blu-ray style disc menus, in Aster and in Jellyfin's web app. <a href="disc-menus.html">Guide</a></li>
+      <li><strong>Aster OP-ED:</strong> every anime opening and ending, with song details. <a href="anime-themes.html">Guide</a></li>
+      <li><strong>Aster Channels:</strong> groups for Live TV channels, and a place to manage Aster's Channels in the Jellyfin dashboard. <a href="channels.html">Guide</a></li>
+      <li><strong>Aster Aurora:</strong> an Apple TV-style look for Jellyfin's web app, with a hero banner, trailer and opening backgrounds, and an episodes row.</li>
+    </ul>
+
+    <p style="margin-top: 32px">Questions? See the <a href="support.html">support page</a> or email <a href="mailto:support@astermediaplayer.com">support@astermediaplayer.com</a>.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Aster Media Player. Not affiliated with Jellyfin, Emby or Plex.</span>
+    <nav aria-label="Footer">
+      <a href="story.html">Why it's free</a>
+      <a href="https://github.com/AsterMediaPlayer/Aster-Media-Player">Source code</a>
+      <a href="index.html#donate">Donate</a>
+      <a href="features.html">Features</a>
+      <a href="channels.html">Channels guide</a>
+      <a href="anime-themes.html">Anime guide</a>
+      <a href="disc-menus.html">Disc menus guide</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+<!-- Ko-fi floating "Support me" button (added 2026-11-11) -->
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  kofiWidgetOverlay.draw('Y7C12AHTH3', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Support me',
+    'floating-chat.donateButton.background-color': '#794bc4',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>
+</body>
+</html>

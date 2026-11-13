@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aster Support</title>
+<meta name="description" content="Help with Aster Media Player: connecting to Jellyfin, Emby or Plex, common problems, supported systems and how to contact us.">
+<link rel="icon" type="image/png" sizes="32x32" href="brand/icon-32.png">
+<link rel="apple-touch-icon" href="brand/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>img{max-width:100%;height:auto}</style>
+<link rel="stylesheet" href="styles.css?v=202611121500">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="brand/aster-logo-360.webp" width="360" height="111" alt="Aster Media Player"></a>
+    <nav class="nav" aria-label="Main">
+      <a href="features.html">Features</a>
+      <a href="channels.html">Channels</a>
+      <a href="anime-themes.html">Anime</a>
+      <a href="disc-menus.html">Disc Menus</a>
+      <a href="support.html" aria-current="page">Support</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="doc">
+  <div class="wrap">
+    <p class="eyebrow">Help</p>
+    <h1>Support</h1>
+    <p class="updated">Aster Media Player for Apple TV, iPhone and iPad, <a href="https://apps.apple.com/us/app/aster-media-player/id6821328142">free on the App Store</a>. Mac is coming soon.</p>
+
+    <h2 id="contact">Contact us</h2>
+    <p>If your question isn't answered below, email us. Please include your device, the Aster version (Settings ▸ About), which server you use (Jellyfin, Emby or Plex) and its version, and what you were doing when the problem happened.</p>
+    <div class="contact-box">
+      <span class="eyebrow">Email</span>
+      <code><a href="mailto:support@astermediaplayer.com">support@astermediaplayer.com</a></code>
+      <span class="plugin-note">You can also report bugs on GitHub: <a href="https://github.com/AsterMediaPlayer/Aster-Media-Player/issues">the app</a> or <a href="https://github.com/AsterMediaPlayer/aster-companion-plugins/issues">the server plugins</a>.</span>
+    </div>
+
+    <h2 id="getting-started">Getting started</h2>
+    <div class="faq">
+      <details open>
+        <summary>What do I need to use Aster?</summary>
+        <p>A Jellyfin, Emby or Plex server that your device can reach, and an account on it. Emby and Plex have most features, and more will be added in later releases. Aster is a player: it doesn't include any media, and it doesn't provide a server.</p>
+      </details>
+      <details>
+        <summary>How do I connect to Jellyfin or Emby?</summary>
+        <p>Open Aster and enter your server's address, for example <code>http://192.168.1.20:8096</code> at home or <code>https://jellyfin.example.com</code> from outside. Then sign in with your username and password for that server. If your server is on the same network, Aster may find it for you.</p>
+      </details>
+      <details>
+        <summary>How do I sign in with Plex?</summary>
+        <p>Choose <strong>Sign in with Plex</strong>. Aster shows a short code. On your phone or computer, go to <a href="https://plex.tv/link">plex.tv/link</a>, sign in to Plex and enter the code. Aster then lists your Plex servers, and your Home profiles if you have them.</p>
+      </details>
+    </div>
+
+    <h2 id="problems">Common problems</h2>
+    <div class="faq">
+      <details>
+        <summary>I can't reach my server from outside my home.</summary>
+        <p>On Plex, turn on <strong>Remote Access</strong> in your Plex server's settings. On Jellyfin or Emby, use your server's public <code>https://</code> address, usually set up with a reverse proxy or a VPN; Jellyfin's and Emby's documentation both cover this.</p>
+        <p>At home, make sure the address includes the port (usually 8096 for Jellyfin and Emby) and the right <code>http</code> or <code>https</code>, and that the same address opens in a web browser on the same network.</p>
+      </details>
+      <details>
+        <summary>Aster warned me that my server address isn't encrypted.</summary>
+        <p>Addresses that start with <code>http://</code> send everything unencrypted, including your sign-in, so anyone on the same network could read it. That's usually fine on a trusted home network, but avoid it on public Wi-Fi or over the internet. Switch to your server's <code>https://</code> address if it has one.</p>
+      </details>
+      <details>
+        <summary>Why does a video buffer or play at lower quality?</summary>
+        <p>When your device can't play a file as it is, the server converts it on the fly, which takes CPU or GPU power on the server. A slow or busy server shows up as buffering or reduced quality. Check your user's streaming bitrate limit and the server's hardware acceleration settings.</p>
+        <p>On Plex, also check <strong>Settings ▸ Transcoder</strong>: the limit on simultaneous video transcodes can stop a converted stream from starting while others are playing.</p>
+      </details>
+      <details>
+        <summary>Styled subtitles take a few seconds to appear on Plex.</summary>
+        <p>For styled (ASS/SSA) subtitles, Aster reads the subtitle track out of the video file itself so it can show the original styling. That takes a few seconds when playback starts. Plain subtitles appear right away.</p>
+      </details>
+      <details>
+        <summary>Which features work only with Jellyfin?</summary>
+        <p>Disc menus and the companion server plugins are built for Jellyfin. Channels work on Jellyfin and Plex: on Plex, make them with the <a href="https://channels.astermediaplayer.com/">Channel Builder</a>. Emby and Plex have most of the rest, and more will be added in later releases. On every device, Plex doesn't have music or Live TV yet.</p>
+        <p>The <a href="features.html">features page</a> lists exactly what works with each server, on each device.</p>
+      </details>
+    </div>
+
+    <h2 id="jellyfin-features">Jellyfin features</h2>
+    <div class="faq">
+      <details>
+        <summary>Do I need anything on my server for Channels, anime openings or disc menus?</summary>
+        <p>Channels work with Jellyfin alone: a channel is a playlist with a few tags on it, and you can make and edit them in the app. The free Channels plugin is optional and adds an editor to your Jellyfin dashboard.</p>
+        <p>Anime openings and endings work without a plugin too. Aster looks for opening and ending chapter markers in your episodes and plays them from Watch OP and Watch ED when it finds them. The free Anime OP/ED plugin adds song details, full-length versions, music videos, and can cut missing themes from your episodes. The <a href="anime-themes.html">anime themes guide</a> walks through setting it up.</p>
+        <p>Disc menus need our free companion plugin. See <a href="#plugins">Install the server plugins</a> below, and the <a href="disc-menus.html">disc menus guide</a> for the rest.</p>
+      </details>
+      <details>
+        <summary>How do I make my first channel?</summary>
+        <p>Any video playlist can become a channel. Pick whichever way suits you:</p>
+        <ul>
+          <li><strong>In Aster:</strong> create and edit channels from the Channels screen.</li>
+          <li><strong>In the Jellyfin dashboard,</strong> with the Channels plugin installed: open Channels, choose New Channel, and start from a show, genre, network, collection or playlist.</li>
+          <li><strong>By hand:</strong> add the tags <code>aster:channel</code> and <code>aster:number=101</code> to a playlist in Jellyfin. Aster picks it up as channel 101.</li>
+        </ul>
+        <p>Other people on your server only see a channel if its playlist is shared with them or public.</p>
+        <p>The <a href="channels.html">channels guide</a> explains every channel tag, with examples.</p>
+      </details>
+      <details>
+        <summary>How do I add commercials between shows?</summary>
+        <p>Make a playlist of clips and tag it <code>aster:filler</code>. Then tag each clip with what it is: <code>aster:commercial</code>, <code>aster:promo</code>, <code>aster:trailer</code>, <code>aster:interstitial</code> or <code>aster:bumper</code>. Untagged clips are skipped. Each channel then chooses which kinds to play, how long breaks run and how often they come.</p>
+      </details>
+    </div>
+
+    <h2 id="plugins">Install the server plugins</h2>
+    <p>Aster's server plugins for Jellyfin are free and open-source. You'll need an administrator account on your Jellyfin server to install them, and you only need the ones for the features you want.</p>
+    <div class="table-wrap">
+      <table class="plugin-table">
+        <thead><tr><th scope="col">Plugin</th><th scope="col">What it adds</th><th scope="col">Needs</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Aster Channels</th><td>A channel editor in your Jellyfin dashboard. Optional: channels work without it.</td><td>Jellyfin 12.1</td></tr>
+          <tr><th scope="row">Aster OP-ED</th><td>Song details, full-length versions, music videos, theme music libraries and clip cutting for anime openings and endings.</td><td>Jellyfin 12</td></tr>
+          <tr><th scope="row">Aster Disc</th><td>Stores your disc menus and serves them to Aster, plus the menu editor and community catalogue. Required for disc menus. Early alpha.</td><td>Jellyfin 12</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ol class="steps">
+      <li>In Jellyfin, open <strong>Dashboard → Plugins → Repositories</strong> and add this repository:
+        <code class="repo-url">https://raw.githubusercontent.com/AsterMediaPlayer/aster-companion-plugins/main/manifest.json</code></li>
+      <li>Open the <strong>Catalogue</strong> and install the plugins you want. Aster Channels and Aster Disc are under General, and Aster OP-ED is under Metadata.</li>
+      <li>Restart Jellyfin.</li>
+      <li>For Aster OP-ED, open <strong>Dashboard → Aster OP/ED</strong> and choose your themes folder. Keep it outside your library folders, so Jellyfin doesn't scan the themes as ordinary videos.</li>
+    </ol>
+    <p>If you're signed in to Aster as a Jellyfin administrator, Aster can also install the plugins for you.</p>
+
+    <h2 id="systems">Supported systems</h2>
+    <ul>
+      <li>iPhone and iPad: iOS and iPadOS 26.1 or later</li>
+      <li>Apple TV: tvOS 26 or later</li>
+      <li>Mac (coming soon): macOS 26 or later</li>
+    </ul>
+
+    <h2 id="more">More questions</h2>
+    <div class="faq">
+      <details>
+        <summary>Does Aster cost anything?</summary>
+        <p>No. The app and its server plugins are free, with no subscriptions, paid tiers or ads. If you'd like to support development, you can <a href="index.html#donate">donate</a>.</p>
+      </details>
+      <details>
+        <summary>Is Aster available for Windows, Linux or Android?</summary>
+        <p>Linux is out as a beta: <a href="thanks.html?get=linux">download it here</a>, with packages for Debian and Ubuntu, Fedora and openSUSE, Arch, Flatpak, and a .tar.gz for anything else, on x64 and ARM64. Windows is built alongside it with the same features and is coming soon. Android and Android TV versions are in development too.</p>
+      </details>
+    </div>
+
+    <h2 id="source">Source code and licenses</h2>
+    <p>Aster is open-source. The app's source code is on GitHub at <a href="https://github.com/AsterMediaPlayer/Aster-Media-Player">AsterMediaPlayer/Aster-Media-Player</a>, under the Mozilla Public License 2.0. Its <a href="https://github.com/AsterMediaPlayer">server plugins and Jellyfin skin</a> are public there too.</p>
+    <p>Licenses for the open-source software used in the app are listed in the app under <strong>Settings ▸ About ▸ Open Source &amp; Licenses</strong>.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Aster Media Player. Not affiliated with Jellyfin, Emby or Plex.</span>
+    <nav aria-label="Footer">
+      <a href="story.html">Why it's free</a>
+      <a href="https://github.com/AsterMediaPlayer/Aster-Media-Player">Source code</a>
+      <a href="index.html#donate">Donate</a>
+      <a href="features.html">Features</a>
+      <a href="channels.html">Channels guide</a>
+      <a href="anime-themes.html">Anime guide</a>
+      <a href="disc-menus.html">Disc menus guide</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+<!-- Ko-fi floating "Support me" button (added 2026-11-11) -->
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  kofiWidgetOverlay.draw('Y7C12AHTH3', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Support me',
+    'floating-chat.donateButton.background-color': '#794bc4',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>
+</body>
+</html>

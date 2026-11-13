@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aster Privacy Policy</title>
+<meta name="description" content="Privacy policy for Aster Media Player. Aster collects no personal data: no accounts, analytics, tracking or ads.">
+<link rel="icon" type="image/png" sizes="32x32" href="brand/icon-32.png">
+<link rel="apple-touch-icon" href="brand/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>img{max-width:100%;height:auto}</style>
+<link rel="stylesheet" href="styles.css?v=202611121500">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="brand/aster-logo-360.webp" width="360" height="111" alt="Aster Media Player"></a>
+    <nav class="nav" aria-label="Main">
+      <a href="features.html">Features</a>
+      <a href="channels.html">Channels</a>
+      <a href="anime-themes.html">Anime</a>
+      <a href="disc-menus.html">Disc Menus</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html" aria-current="page">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="doc">
+  <div class="wrap">
+    <p class="eyebrow">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Effective November 5, 2026</p>
+
+    <div class="callout">
+      <p><strong>In short:</strong> Aster doesn't collect, store or sell any personal data. It has no accounts, no analytics, no tracking and no ads. If you choose to send a bug report, that report is the only thing Aster ever sends its developer, and your sign-ins, server address and names are taken out of it first.</p>
+    </div>
+
+    <h2>Your media servers</h2>
+    <p>Aster connects only to the Jellyfin, Emby or Plex servers you sign in to. Your viewing activity, such as what you play and how far you got, goes to your server, because that's how the server keeps resume points and watched status. Aster's developer never receives it.</p>
+    <p>Your server is run by you or by someone you choose, and it handles that data under its operator's own policies.</p>
+
+    <h2>Stored on your device</h2>
+    <ul>
+      <li>Server addresses and sign-in tokens are kept in the system Keychain. Aster doesn't store your password.</li>
+      <li>Settings and downloads stay on the device.</li>
+      <li>Widgets and Top Shelf read them through the app's own App Group, which only Aster's parts can open.</li>
+    </ul>
+    <p>Nothing stored on your device leaves it, except to your own server, or if you choose to send a <a href="#bug-reports">bug report</a>, with anything private taken out first. It's removed when you sign out or delete the app.</p>
+
+    <h2>Third-party services Aster contacts</h2>
+    <p>Aster contacts these services directly, and only for the reasons listed:</p>
+    <ul>
+      <li><strong>plex.tv</strong>, only if you sign in with Plex. This covers signing in, your server list and Home profiles, and is subject to <a href="https://www.plex.tv/about/privacy-legal/">Plex's privacy policy</a>.</li>
+      <li><strong>AnimeThemes</strong> (<code>api.animethemes.moe</code>), to look up the opening and ending songs for anime episodes. Aster sends the show's name, year or AniDB id, and nothing about you.</li>
+      <li><strong>Disc menu artwork.</strong> A disc menu can show pictures and play sounds from addresses its menu file names, such as TMDB (<code>image.tmdb.org</code>) or another image host. Aster loads them straight from those sites when you open the menu.</li>
+    </ul>
+    <p>Like any website, these services, including any site a disc menu loads artwork from, can see your device's IP address when Aster connects to them.</p>
+
+    <h2>Settings on your server</h2>
+    <p>Some settings follow you between devices because they're stored on your Jellyfin server, with your user account there. They don't go anywhere else.</p>
+
+    <h2>Unencrypted connections</h2>
+    <p>If you use a server address that starts with <code>http://</code>, the traffic between Aster and your server isn't encrypted, and others on the same network could read it. Aster warns you before you sign in to an address like that. Use an <code>https://</code> address whenever you can.</p>
+
+    <h2 id="bug-reports">If you choose to send a bug report</h2>
+    <p>Nothing is sent unless you choose to send a bug report. On Apple devices and Android, you can send one from <strong>Settings &rsaquo; About</strong>, and Aster offers to send one after it closes unexpectedly, which you can decline. A report is sent only when you press Send, and Aster tells you what it holds before you do.</p>
+    <p><strong>What a report holds:</strong></p>
+    <ul>
+      <li>What went wrong, in your own words.</li>
+      <li>The app's version, your device's model and system version, and what it can play.</li>
+      <li>Your server's kind and version (Jellyfin, Emby or Plex), but not its address.</li>
+      <li>What was last played and how it was played, the app's settings, and the app's recent log, including what happened if the app last closed unexpectedly.</li>
+      <li>An email address for a reply, only if you type one in. TVs don't ask for one.</li>
+    </ul>
+    <p><strong>What's taken out on your device first.</strong> Before a report leaves your device, everything in it except your own description and the reply address you typed is passed through a filter that removes:</p>
+    <ul>
+      <li>sign-ins: access tokens, API keys, passwords, authorization headers and your device's id;</li>
+      <li>where your server is: its addresses, host names and IP addresses (including Plex's <code>plex.direct</code> names);</li>
+      <li>who you are: your user name and account id, your server's name, and any email addresses in the log;</li>
+      <li>your library's file paths, which would name your titles. Only the kind of file is kept, such as "mkv".</li>
+    </ul>
+    <p>Your description is sent exactly as you wrote it, so please don't put passwords or other private details in it. Reports never include screenshots.</p>
+    <p><strong>Where it goes:</strong> to Aster's own report service at <code>astermediaplayer.com</code>, over an encrypted connection. It's stored on Aster's own server and read only by the developer, to fix the problem. When a report arrives, the developer gets a short phone notification through <a href="https://pushover.net/privacy">Pushover</a>, holding the platform, app version, server kind and the first line of your description.</p>
+    <p><strong>How long it's kept:</strong> reports are kept only as long as they help fix bugs. To have yours deleted, email the report's code (shown after you send it) to the address below.</p>
+
+    <h2>Crash reports from Apple</h2>
+    <p>Separately, if you've chosen to share analytics with app developers in your device settings, Apple may pass anonymous crash reports to the developer. These are used only to fix bugs, and you can turn sharing off at any time in Settings.</p>
+
+    <h2>Children</h2>
+    <p>Aster collects no data from anyone, children included, beyond a bug report someone chooses to send. Parental ratings and access limits are managed in your server's user settings.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes, this page and the date at the top will be updated. Significant changes will also be mentioned in the app's release notes.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about privacy? Email <a href="mailto:support@astermediaplayer.com">support@astermediaplayer.com</a>, or see the <a href="support.html">support page</a>.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Aster Media Player. Not affiliated with Jellyfin, Emby or Plex.</span>
+    <nav aria-label="Footer">
+      <a href="story.html">Why it's free</a>
+      <a href="https://github.com/AsterMediaPlayer/Aster-Media-Player">Source code</a>
+      <a href="index.html#donate">Donate</a>
+      <a href="features.html">Features</a>
+      <a href="channels.html">Channels guide</a>
+      <a href="anime-themes.html">Anime guide</a>
+      <a href="disc-menus.html">Disc menus guide</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+<!-- Ko-fi floating "Support me" button (added 2026-11-11) -->
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  kofiWidgetOverlay.draw('Y7C12AHTH3', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Support me',
+    'floating-chat.donateButton.background-color': '#794bc4',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>
+</body>
+</html>

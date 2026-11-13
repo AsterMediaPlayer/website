@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aster Anime Themes Guide</title>
+<meta name="description" content="How to set up anime openings and endings in Aster Media Player: the Aster OP-ED plugin for Jellyfin, naming theme files, song details from AnimeThemes, and cutting missing themes from your episodes.">
+<link rel="icon" type="image/png" sizes="32x32" href="brand/icon-32.png">
+<link rel="apple-touch-icon" href="brand/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>img{max-width:100%;height:auto}</style>
+<link rel="stylesheet" href="styles.css?v=202611121500">
+<style>
+  .doc h3 { font-size: var(--step-0); margin-top: 28px; margin-bottom: 8px; }
+  .toc { margin-top: 20px; padding: 16px 20px; border: 1px solid var(--line); border-radius: var(--radius); }
+  .toc ol { margin: 8px 0 0; padding-left: 1.2rem; display: grid; gap: 4px; }
+  .tag-list { display: block; margin-top: 12px; padding: 12px 14px; border-radius: 8px; background: var(--petal-soft);
+    font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.7; white-space: pre; overflow-x: auto; }
+  .tag-table { width: 100%; border-collapse: collapse; font-size: var(--step--1); min-width: 36rem; }
+  .tag-table th, .tag-table td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  .tag-table thead th { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .tag-table tbody th { font-family: var(--font-mono); font-weight: 600; font-size: 0.82rem; white-space: nowrap; }
+  .tag-table td:last-child { color: var(--muted); }
+  .tag-table td p + p { margin-top: 6px; }
+  .tag-table td code { white-space: nowrap; }
+  kbd { font-family: var(--font-mono); font-size: 0.8em; padding: 1px 6px; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 5px; background: var(--surface); }
+  /* Phones: each row becomes a card instead of a sideways-scrolling table. */
+  @media (max-width: 640px) {
+    .tag-table { min-width: 0; }
+    .tag-table thead { display: none; }
+    .tag-table, .tag-table tbody, .tag-table tr, .tag-table th, .tag-table td { display: block; width: auto; }
+    .tag-table tr { padding-block: 14px; border-bottom: 1px solid var(--line); }
+    .tag-table th, .tag-table td { padding: 0; border: 0; }
+    .tag-table tbody th { white-space: normal; overflow-wrap: anywhere; margin-bottom: 6px; color: var(--petal); }
+    .tag-table td + td { margin-top: 8px; font-size: 0.95em; }
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="brand/aster-logo-360.webp" width="360" height="111" alt="Aster Media Player"></a>
+    <nav class="nav" aria-label="Main">
+      <a href="features.html">Features</a>
+      <a href="channels.html">Channels</a>
+      <a href="anime-themes.html" aria-current="page">Anime</a>
+      <a href="disc-menus.html">Disc Menus</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="doc">
+  <div class="wrap">
+    <p class="eyebrow">Guide</p>
+    <h1>Anime openings and endings</h1>
+    <p class="updated">For Jellyfin servers · Aster OP-ED plugin 0.5</p>
+
+    <div class="callout">
+      <p><strong>In short:</strong> put your opening and ending files in a folder on your Jellyfin server, one folder per show. The free Aster OP-ED plugin matches each one to the right episodes and fills in the song and artist, and Aster plays them from the episode page.</p>
+    </div>
+
+    <figure class="video-demo">
+      <div class="frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/syTcaU8J3r8?rel=0" title="Aster Anime Theme Video Demo" loading="lazy"
+                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <figcaption>A quick demo of anime openings and endings in Aster.</figcaption>
+    </figure>
+
+    <nav class="toc" aria-label="On this page">
+      <strong>On this page</strong>
+      <ol>
+        <li><a href="#no-plugin">What works without the plugin</a></li>
+        <li><a href="#install">Install the plugin</a></li>
+        <li><a href="#folder">Set up your themes folder</a></li>
+        <li><a href="#naming">Naming theme files</a></li>
+        <li><a href="#scanning">Scanning</a></li>
+        <li><a href="#song-details">Song details</a></li>
+        <li><a href="#clips">Cut missing themes from your episodes</a></li>
+        <li><a href="#upgrade">Swap in a better version</a></li>
+        <li><a href="#libraries">Your themes as Jellyfin libraries</a></li>
+        <li><a href="#in-aster">Watching in Aster</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="no-plugin">What works without the plugin</h2>
+    <p>With no plugin on your server, Aster looks for opening and ending chapter markers in your episodes. When it finds them, <strong>Watch OP</strong> and <strong>Watch ED</strong> play that part of the episode. This works with any Jellyfin server, as long as your files have chapters.</p>
+    <p>The plugin adds everything else on this page: song titles and artists, the episodes each theme aired with, full-length songs, music videos, theme libraries, and cutting missing themes out of your episodes.</p>
+
+    <h2 id="install">Install the plugin</h2>
+    <p>You need Jellyfin 12 and an administrator account.</p>
+    <ol class="steps">
+      <li>In Jellyfin, open <strong>Dashboard ▸ Plugins ▸ Repositories</strong> and add this repository:
+        <code class="repo-url">https://raw.githubusercontent.com/AsterMediaPlayer/aster-companion-plugins/main/manifest.json</code></li>
+      <li>Open the <strong>Catalogue</strong>, find <strong>Aster OP-ED</strong> under Metadata, and install it.</li>
+      <li>Restart Jellyfin.</li>
+      <li>Open <strong>Dashboard ▸ Aster OP/ED</strong> and choose your themes folder, as below.</li>
+    </ol>
+    <p>If you're signed in to Aster as a Jellyfin administrator, Aster can also install the plugin for you.</p>
+
+    <h2 id="folder">Set up your themes folder</h2>
+    <p>On the <strong>Setup</strong> tab, choose the folder your theme files will live in. Two rules:</p>
+    <ul>
+      <li><strong>Give the path as Jellyfin sees it.</strong> If Jellyfin runs in Docker, that's the path inside the container, not on your computer.</li>
+      <li><strong>Keep it outside your library folders,</strong> so Jellyfin doesn't scan the themes as ordinary videos.</li>
+    </ul>
+    <p>Inside it, make one folder per show, named <em>exactly</em> like that show's folder in your library:</p>
+    <code class="tag-list">anime_themes/
+  Frieren (2023)/
+    OP1.webm
+    OP1.ogg
+    ED1.webm
+    Season 2/
+      OP1.webm
+    anidb-18886/
+      ED2.webm</code>
+    <ul>
+      <li><strong>One theme, two files.</strong> A video and an audio file with the same name, like <code>OP1.webm</code> and <code>OP1.ogg</code>, are one theme.</li>
+      <li><strong>Seasons.</strong> Files directly in the show's folder can apply to the whole show. Put them in a <code>Season 2</code> folder to tie them to that season, or in an <code>anidb-</code> folder with the AniDB id to tie them to that exact entry.</li>
+      <li><strong>Shokofin.</strong> If you use <a href="https://github.com/ShokoAnime/Shokofin">Shokofin</a>, whose library folders are virtual, name the show folders after your original files' folders. The plugin follows each episode back to its real file.</li>
+    </ul>
+
+    <h2 id="naming">Naming theme files</h2>
+    <p>A theme file's name starts with <code>OP</code> or <code>ED</code>, then an optional number. Anything the plugin doesn't need, such as <code>NCBD1080</code>, is ignored, so AnimeThemes' own file names work as they are.</p>
+    <div class="table-wrap">
+      <table class="tag-table">
+        <thead><tr><th scope="col">Name</th><th scope="col">What it is</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">OP1.webm</th><td>The first opening. <code>ED2</code> is the second ending, and plain <code>OP</code> works when there's only one.</td></tr>
+          <tr><th scope="row">OP1v2.webm</th><td>A second version of OP1, for example with different footage.</td></tr>
+          <tr><th scope="row">ED1-TV.ogg</th><td>A variant, attached with a hyphen.</td></tr>
+          <tr><th scope="row">OP1-Full.m4a</th><td>
+            <p>The full-length song. It belongs to OP1 and shares its song details, so Aster can offer either version.</p>
+            <p>Also recognised: <code>OP1 Full</code>, <code>OP1 (Full)</code>, <code>OP1 [Full Version]</code>, <code>OP1 - Full - YOASOBI</code>.</p>
+          </td></tr>
+          <tr><th scope="row">OP1-MV.mp4</th><td>
+            <p>The song's official music video. It also belongs to OP1.</p>
+            <p>Also recognised: <code>OP1 (Music Video)</code>, <code>OP1 [MV]</code>, <code>OP1 - MV - YOASOBI</code>.</p>
+          </td></tr>
+          <tr><th scope="row">SousouNoFrieren-ED1-TV-NCBD1080.ogg</th><td>An AnimeThemes download, as it comes.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul>
+      <li>A theme can have a TV-size version, a full version and a music video all at once. Each of them can be video, audio or both.</li>
+      <li><strong>Video:</strong> WebM, MP4, MKV, M4V, MOV. <strong>Audio:</strong> Ogg, Opus, MP3, FLAC, M4A, AAC, WAV.</li>
+      <li>Formats Apple devices can't play, like AnimeThemes' WebM and Ogg, are fine. The plugin makes a playable copy on your server automatically.</li>
+      <li>You can also put the song details in the name: see <a href="#song-details">Song details</a>.</li>
+    </ul>
+
+    <h2 id="scanning">Scanning</h2>
+    <p>The plugin scans the themes folder when Jellyfin starts and every 12 hours. To scan straight away, press <strong>Save and scan now</strong> on the Setup tab.</p>
+    <p>After each scan, the Setup tab lists anything it couldn't use: folders that match no show, files that don't look like an opening or ending, and themes with no song details. Check there first when something's missing.</p>
+
+    <h2 id="song-details">Song details</h2>
+    <p>Each theme can have a song title, artists, the episodes it plays in, and spoiler and NSFW flags. They come from three places, and the most specific one wins, one detail at a time:</p>
+
+    <h3>1. Your own edits</h3>
+    <p>Open the <strong>Library</strong> tab in Dashboard ▸ Aster OP/ED. Themes are grouped by show, and you can search, or filter to the ones that need details. <strong>Edit</strong> a theme to see its details and where each came from, then <strong>Save</strong>. <strong>Clear</strong> removes your edit, so the other sources apply again. Jellyfin needs permission to write to the themes folder for this.</p>
+    <p>Your edits are saved in a <code>themes.json</code> file in the show's theme folder, which you can also edit by hand:</p>
+    <code class="tag-list">{
+  "OP1":          { "title": "Yuusha", "artists": ["YOASOBI"], "episodes": "1-16" },
+  "ED1-TV":       { "title": "bliss", "artists": "milet", "episodes": "1", "spoiler": false },
+  "Season 2/OP1": { "title": "lulu.", "artists": ["Mrs. GREEN APPLE"] }
+}</code>
+    <p>If a theme lands in the wrong season, pick the right one with the <strong>Season</strong> dropdown in the editor, or type its AniDB id.</p>
+
+    <h3>2. The file name</h3>
+    <p>The code, then the title, then the artists separated by commas or <code>&amp;</code>, then the episodes in square brackets if you like:</p>
+    <code class="tag-list">OP1 - Yuusha - YOASOBI [1-16].webm
+ED1-TV - bliss - milet.ogg</code>
+
+    <h3>3. AnimeThemes.moe</h3>
+    <p>Anything you haven't set yourself is looked up on <a href="https://animethemes.moe">AnimeThemes.moe</a>, a community project. The lookup works from the AniDB ids on your shows and seasons; <a href="https://github.com/ShokoAnime/Shokofin">Shokofin</a> sets them for you, and AniList, MyAnimeList and Kitsu ids work too. A show with no id at all is looked up by its title, and the editor labels those matches so you can check them.</p>
+    <ul>
+      <li>Lookups are batched, spaced out and remembered for two weeks, to keep the load off AnimeThemes' servers. Shows AnimeThemes doesn't have yet are checked again after a few days.</li>
+      <li>The plugin never downloads video or audio from AnimeThemes. You supply the files.</li>
+      <li>To turn off title matching, untick <strong>Match shows by title when they have no ID</strong>. To never contact AnimeThemes at all, untick <strong>Look up song, artists and episodes on AnimeThemes.moe</strong>. Everything else keeps working, and you can fill in details with the editor.</li>
+    </ul>
+    <p>Aster and its plugins aren't affiliated with or endorsed by AnimeThemes.</p>
+
+    <h2 id="clips">Cut missing themes from your episodes</h2>
+    <p>Missing an opening or ending? The plugin can cut it out of your own episodes, using their chapter markers. Nothing is ever cut without you asking, and every clip waits for your approval.</p>
+    <ol class="steps">
+      <li>On the Setup tab, tick the libraries to search under <strong>Libraries to search</strong>. None are searched until you do.</li>
+      <li>Press <strong>Look for clips now</strong>, or run <strong>Cut OP/ED clips from chapters</strong> in Scheduled Tasks.</li>
+      <li>For each opening and ending a season should have but doesn't, the plugin finds an episode with a matching chapter and cuts that chapter out as a clip.</li>
+      <li>Review the clips on the <strong>Review</strong> tab, then press <strong>Add to library</strong>.</li>
+    </ol>
+
+    <h3>Which chapters count</h3>
+    <div class="table-wrap">
+      <table class="tag-table">
+        <thead><tr><th scope="col">Looking for</th><th scope="col">Chapter names</th><th scope="col">Length</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Opening</th><td><code>OP</code> or <code>Opening</code>, with an optional number like <code>OP2</code></td><td>30 to 200 seconds</td></tr>
+          <tr><th scope="row">Ending</th><td><code>ED</code> or <code>Ending</code>, and also <code>Credits</code>, <code>End Credits</code>, <code>Outro</code> or <code>Closing</code></td><td>30 to 200 seconds; 30 to 150 for the extra names</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><code>Intro</code> and <code>Preview</code> chapters are ignored on purpose, because they usually mean something else.</p>
+
+    <h3>Reviewing clips</h3>
+    <p>The Review tab groups clips by show, and plays each one beside what AnimeThemes says it should be. Click a clip, then use:</p>
+    <div class="table-wrap">
+      <table class="tag-table">
+        <thead><tr><th scope="col">Key</th><th scope="col">What it does</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><kbd>A</kbd> Approve</th><td>Moves the clip into your themes folder as an ordinary theme. Check the number in the row's number box first: clips are cut as OP1 or ED1 unless AnimeThemes or the chapter name says otherwise.</td></tr>
+          <tr><th scope="row"><kbd>R</kbd> Reject</th><td>Deletes the clip, and that slot isn't cut again until you choose <strong>Forget rejections</strong>.</td></tr>
+          <tr><th scope="row"><kbd>T</kbd> Try another</th><td>For clips with credits or text over them: deletes the clip and cuts the same theme from the next usable episode. When there are none left, it tells you, and you can add the file yourself.</td></tr>
+          <tr><th scope="row"><kbd>P</kbd> Preview</th><td>Plays the clip.</td></tr>
+          <tr><th scope="row">Arrow keys</th><td>Move between clips. <strong>Approve all</strong> and <strong>Reject all</strong> work on a whole show.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>When you're done, press <strong>Add to library</strong> in the bar at the bottom of the page. It adds the whole batch in one go. It's never pressed for you, because it looks up song details on AnimeThemes.</p>
+    <p><strong>Same opening or a different one?</strong> Once you approve a clip, later clips from the same show are compared with its length and marked "possibly the same OP" or "probably a different OP". Treat that as a hint, not an answer: different songs can be the same length.</p>
+
+    <h2 id="upgrade">Swap in a better version</h2>
+    <p>Found a better copy of an opening, such as a creditless one? Put it in the show's folder in place of the old file, in any supported format. Then press <strong>Rescan files</strong> on that show in the Library tab.</p>
+    <p>The plugin picks up the new file and makes a playable copy if it needs one. The file you replaced goes into an <code>_originals</code> folder next to it: nothing is deleted.</p>
+
+    <h2 id="libraries">Your themes as Jellyfin libraries</h2>
+    <p>Want to listen to your theme songs like any other music? On the Setup tab, turn on <strong>Publish the themes as Jellyfin libraries</strong>, choose a folder for them, and press <strong>Save and create the libraries</strong>. The plugin adds two libraries and keeps them up to date:</p>
+    <ul>
+      <li><strong>Anime Openings &amp; Endings</strong> (music videos): every theme with a video, with its song details and artwork. It takes no extra space.</li>
+      <li><strong>Anime Theme Songs</strong> (music): every theme's song, with an album per show.</li>
+    </ul>
+    <p>Playlists, favourites, search and parental controls then work as they do for anything else. Spoiler and NSFW themes are tagged, and NSFW videos get an age rating you choose (NC-17 unless you change it), so parental controls apply to them too.</p>
+    <p>The folder has to be outside your themes folder and every other library. Don't change the files in it by hand: the plugin overwrites them.</p>
+
+    <h2 id="in-aster">Watching in Aster</h2>
+    <p>Open any episode and choose <strong>Watch OP</strong> or <strong>Watch ED</strong>. Aster plays the theme that aired with that episode, so when a show changes openings halfway through a season, Aster changes with it. If a theme has a full-length song or a music video, you can switch to that version too.</p>
+    <p>Themes flagged as spoilers or NSFW are handled with care.</p>
+
+    <h2 id="troubleshooting">Troubleshooting</h2>
+    <div class="faq">
+      <details>
+        <summary>A show's themes don't show up.</summary>
+        <p>Check the Setup tab after a scan. If the show's folder is listed as not matching any show, its name doesn't match the show's folder in your library. Rename it to match exactly, then press <strong>Save and scan now</strong>. Also check the files start with <code>OP</code> or <code>ED</code>, and the themes folder is outside your libraries.</p>
+      </details>
+      <details>
+        <summary>A theme has no song title or artist.</summary>
+        <p>AnimeThemes may not have that show yet: newer and lesser-known shows are often added later, and the plugin checks again after a few days. It also needs an AniDB, AniList, MyAnimeList or Kitsu id on the show. In the meantime, fill in the details in the editor on the Library tab, or in the file name.</p>
+      </details>
+      <details>
+        <summary>A theme plays on the wrong episodes, or in the wrong season.</summary>
+        <p>Open it in the editor on the Library tab, which says how its season was chosen. Pick the right one with the <strong>Season</strong> dropdown, or move the file into that season's <code>Season N</code> or <code>anidb-</code> folder. To set which episodes it plays in, edit its episode range.</p>
+      </details>
+      <details>
+        <summary>A new theme won't play yet.</summary>
+        <p>If it's a format Apple devices can't play, like WebM, the plugin is still making a playable copy. That takes about 15 seconds for a 90-second opening, one file at a time, so a big batch can take a while.</p>
+      </details>
+      <details>
+        <summary>The editor won't save.</summary>
+        <p>Jellyfin needs permission to write to your themes folder. If it runs in Docker, check that the folder isn't mounted read-only.</p>
+      </details>
+      <details>
+        <summary>Look for clips now doesn't find anything.</summary>
+        <p>Make sure you ticked at least one library under <strong>Libraries to search</strong>, and that your episodes have chapters named like the ones in <a href="#clips">the table above</a>. Episodes without chapter markers can't be cut.</p>
+      </details>
+    </div>
+
+    <p style="margin-top: 32px">Still stuck? See the <a href="support.html">support page</a> or email <a href="mailto:support@astermediaplayer.com">support@astermediaplayer.com</a>.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Aster Media Player. Not affiliated with Jellyfin, Emby, Plex or AnimeThemes.</span>
+    <nav aria-label="Footer">
+      <a href="story.html">Why it's free</a>
+      <a href="https://github.com/AsterMediaPlayer/Aster-Media-Player">Source code</a>
+      <a href="index.html#donate">Donate</a>
+      <a href="features.html">Features</a>
+      <a href="channels.html">Channels guide</a>
+      <a href="anime-themes.html">Anime guide</a>
+      <a href="disc-menus.html">Disc menus guide</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+<!-- Ko-fi floating "Support me" button (added 2026-11-11) -->
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  kofiWidgetOverlay.draw('Y7C12AHTH3', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Support me',
+    'floating-chat.donateButton.background-color': '#794bc4',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>
+</body>
+</html>
