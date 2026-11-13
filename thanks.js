@@ -29,11 +29,11 @@
             ]
         },
         'android-apk': {
-            name: 'Aster for Android (APK)',
+            name: 'Aster for Android and Android TV (APK)',
             file: true,
-            url: '',   // the .apk file
+            url: 'https://github.com/AsterMediaPlayer/aster-android/releases/download/v0.11.0/aster-v0.11.0.apk',
             next: [
-                'Open the downloaded file to install it. Android may ask you to allow installs from your browser or file manager first.',
+                'Open the downloaded file to install it. Android may ask you to allow installs from your browser or file manager first. Aster needs Android 8.0 or later.',
                 'On Android TV, copy the file to the TV (for example with a file manager app) and open it there.',
                 'Then open Aster and add your server.'
             ]
