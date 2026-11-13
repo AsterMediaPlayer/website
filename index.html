@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;600&display=swap">
 <style>img{max-width:100%;height:auto}</style>
-<link rel="stylesheet" href="styles.css?v=202611121500">
+<link rel="stylesheet" href="styles.css?v=202611131000">
 </head>
 <body>
 <header class="site-header">
@@ -36,11 +36,6 @@
         <h1>Your library, <em>on the air.</em></h1>
         <p class="lede">Aster plays your Jellyfin server like television. Tune into channels you build from your own shows, watch anime with its real openings, and open discs through their menus.</p>
         <div class="cta-row">
-          <!-- Goes via the thanks page, which opens the App Store (link in thanks.js, apple.url). -->
-          <a class="btn btn-primary" href="thanks.html?get=apple">
-            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.6-1-2.6-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg>
-            Download on the App Store
-          </a>
           <a class="btn btn-ghost" href="#features">See what it does</a>
         </div>
         <p class="platform-note">Free on the App Store for Apple TV, iPhone and iPad, and as betas for <a href="thanks.html?get=windows">Windows</a> and <a href="thanks.html?get=linux">Linux</a>. Mac, Android and Android TV are coming soon. <a href="features.html">See what each one does</a>.</p>
@@ -50,6 +45,21 @@
         <img src="screenshots/channels-guide.webp" width="1672" height="941" fetchpriority="high" decoding="async"
              alt="Aster's Channels guide on Apple TV. Three channels, Moonlit Movies, Comfort Loop and Starwave, are listed against times from 11:00 AM to 1:30 PM, with the current programme, Lanterns of Hollowmere, shown above with its poster and description, and an Edit Channels button.">
         <figcaption>The Channels guide in Aster for Apple TV. <span class="shot-tag">Channels</span> <span class="ai-note">AI-generated artwork. The shows pictured are fictional.</span></figcaption>
+        <!-- Each goes via the thanks page (links in thanks.js): the App Store, or the Windows and Linux files to pick from. -->
+        <div class="download-row">
+          <a class="btn btn-primary" href="thanks.html?get=apple">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.6-1-2.6-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg>
+            App Store
+          </a>
+          <a class="btn btn-primary" href="thanks.html?get=windows">
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 3h8.5v8.5H3zM12.5 3H21v8.5h-8.5zM3 12.5h8.5V21H3zM12.5 12.5H21V21h-8.5z"/></svg>
+            Windows <span class="btn-tag">Beta</span>
+          </a>
+          <a class="btn btn-primary" href="thanks.html?get=linux">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2c-2.3 0-3.6 1.9-3.6 4.6 0 1.4.3 2.3-.5 3.6-1 1.6-2.9 3.9-2.9 6.6 0 .7.1 1.3.4 1.9-.9.4-1.9.9-1.6 1.8.3.8 2.4.6 3.5 1.1 1 .5 2 .4 2.6-.3.6.2 1.3.3 2.1.3s1.5-.1 2.1-.3c.6.7 1.6.8 2.6.3 1.1-.5 3.2-.3 3.5-1.1.3-.9-.7-1.4-1.6-1.8.3-.6.4-1.2.4-1.9 0-2.7-1.9-5-2.9-6.6-.8-1.3-.5-2.2-.5-3.6C15.6 3.9 14.3 2 12 2zm-1.4 4.2c.4 0 .7.5.7 1.1s-.3 1.1-.7 1.1-.7-.5-.7-1.1.3-1.1.7-1.1zm2.8 0c.4 0 .7.5.7 1.1s-.3 1.1-.7 1.1-.7-.5-.7-1.1.3-1.1.7-1.1zM12 9.3c.9 0 2 .5 2 .9s-1.1 1.1-2 1.1-2-.7-2-1.1.9-.9 2-.9z"/></svg>
+            Linux <span class="btn-tag">Beta</span>
+          </a>
+        </div>
       </figure>
     </div>
   </section>
