@@ -26,9 +26,10 @@
   .go-row .note { color: var(--muted); font-size: var(--step--1); }
   .next { margin-top: 12px; padding-left: 1.3rem; display: grid; gap: 8px; }
   .downloads { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 10px; }
-  .downloads a { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); text-decoration: none; color: var(--ink); font-weight: 700; }
+  .downloads a, .downloads .pick { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); text-decoration: none; color: var(--ink); font-weight: 700; }
   .downloads a:hover { border-color: var(--petal); }
   .downloads small { color: var(--muted); font-weight: 400; }
+  .downloads .pick small { font-family: var(--font-mono); font-size: var(--step--1); }
   .guides { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); margin-top: 16px; }
   .guide { display: block; padding: 16px 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); text-decoration: none; color: var(--ink); }
   .guide:hover { border-color: var(--petal); }
@@ -80,9 +81,9 @@
       <ul class="downloads">
         <li><a href="thanks.html?get=apple">Apple TV, iPhone and iPad <small>App Store</small></a></li>
         <li><a href="thanks.html?get=android">Android and Android TV <small>Google Play, coming soon</small></a></li>
-        <li><a href="thanks.html?get=android-apk">Android and Android TV <small>APK file</small></a></li>
-        <li><a href="thanks.html?get=windows">Windows <small>Beta · Installer or portable .zip</small></a></li>
-        <li><a href="thanks.html?get=linux">Linux <small>Beta · .deb, .rpm, Arch, Flatpak</small></a></li>
+        <li><a href="thanks.html?get=android-apk">Android and Android TV <small>APK from GitHub</small></a></li>
+        <li><a href="thanks.html?get=windows">Windows <small>Beta · from GitHub</small></a></li>
+        <li><a href="thanks.html?get=linux">Linux <small>Beta · from GitHub</small></a></li>
       </ul>
     </section>
 
@@ -124,7 +125,7 @@
     </nav>
   </div>
 </footer>
-<script src="thanks.js?v=20261113a"></script>
+<script src="thanks.js?v=20261115r"></script>
 <!-- Ko-fi floating "Support me" button (added 2026-11-11) -->
 <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
 <script>

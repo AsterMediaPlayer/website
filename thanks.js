@@ -28,11 +28,14 @@
                 'Open Aster, then add your server: type its address for Jellyfin or Emby, or choose Sign in with Plex.'
             ]
         },
+        // GitHub downloads always go to the repo's releases page, never a tagged release or file, so the
+        // site never needs updating for a new version. (/releases/latest would skip the beta pre-releases.)
         'android-apk': {
             name: 'Aster for Android and Android TV (APK)',
-            file: true,
-            url: 'https://github.com/AsterMediaPlayer/aster-android/releases/download/v0.11.0/aster-v0.11.0.apk',
+            store: 'GitHub',
+            url: 'https://github.com/AsterMediaPlayer/aster-android/releases',
             next: [
+                'On the releases page, open the newest release and download the file ending in .apk.',
                 'Open the downloaded file to install it. Android may ask you to allow installs from your browser or file manager first. Aster needs Android 8.0 or later.',
                 'On Android TV, copy the file to the TV (for example with a file manager app) and open it there.',
                 'Then open Aster and add your server.'
@@ -40,13 +43,10 @@
         },
         windows: {
             name: 'Aster for Windows (beta)',
-            file: true,
-            release: 'https://github.com/AsterMediaPlayer/aster-windows/releases/tag/v0.11.0-beta',
+            release: 'https://github.com/AsterMediaPlayer/aster-windows/releases',
             choices: [
-                { label: 'Installer (recommended)', note: '.exe · x64',
-                  url: 'https://github.com/AsterMediaPlayer/aster-windows/releases/download/v0.11.0-beta/Aster-0.11.0-beta-windows-x64-setup.exe' },
-                { label: 'Portable, runs from any folder', note: '.zip · x64',
-                  url: 'https://github.com/AsterMediaPlayer/aster-windows/releases/download/v0.11.0-beta/Aster-0.11.0-beta-windows-x64.zip' }
+                { label: 'Installer (recommended)', note: '…-windows-x64-setup.exe' },
+                { label: 'Portable, runs from any folder', note: '…-windows-x64.zip' }
             ],
             next: [
                 'Open the installer and follow its steps; it doesn\'t need administrator rights. Or unzip the portable version anywhere and run Aster from there. Aster needs 64-bit Windows 10 (version 1809) or later.',
@@ -56,28 +56,17 @@
         },
         linux: {
             name: 'Aster for Linux (beta)',
-            file: true,
-            // Several packages: the page lists them instead of starting one. Each url is a file on the GitHub release.
-            release: 'https://github.com/AsterMediaPlayer/aster-linux/releases/tag/v0.11.0-beta',
+            release: 'https://github.com/AsterMediaPlayer/aster-linux/releases',
             choices: [
-                { label: 'Debian, Ubuntu, Mint, Pop!_OS', note: '.deb · x64',
-                  url: 'https://github.com/AsterMediaPlayer/aster-linux/releases/download/v0.11.0-beta/aster_0.11.0.beta_amd64.deb' },
-                { label: 'Fedora, openSUSE', note: '.rpm · x64',
-                  url: 'https://github.com/AsterMediaPlayer/aster-linux/releases/download/v0.11.0-beta/aster-0.11.0.beta-1.x86_64.rpm' },
-                { label: 'Arch, Manjaro, CachyOS', note: '.pkg.tar.zst · x64',
-                  url: 'https://github.com/AsterMediaPlayer/aster-linux/releases/download/v0.11.0-beta/aster-0.11.0beta-1-x86_64.pkg.tar.zst' },
-                { label: 'Flatpak', note: '.flatpak · x64',
-                  url: 'https://github.com/AsterMediaPlayer/aster-linux/releases/download/v0.11.0-beta/Aster-0.11.0-beta-x86_64.flatpak' },
-                { label: 'Any other distribution', note: '.tar.gz · x64',
-                  url: 'https://github.com/AsterMediaPlayer/aster-linux/releases/download/v0.11.0-beta/Aster-0.11.0-beta-linux-x64.tar.gz' },
-                { label: 'Debian, Ubuntu on ARM (Raspberry Pi 5)', note: '.deb · ARM64',
-                  url: 'https://github.com/AsterMediaPlayer/aster-linux/releases/download/v0.11.0-beta/aster_0.11.0.beta_arm64.deb' },
-                { label: 'Fedora, openSUSE on ARM', note: '.rpm · ARM64',
-                  url: 'https://github.com/AsterMediaPlayer/aster-linux/releases/download/v0.11.0-beta/aster-0.11.0.beta-1.aarch64.rpm' },
-                { label: 'Arch on ARM', note: '.pkg.tar.zst · ARM64',
-                  url: 'https://github.com/AsterMediaPlayer/aster-linux/releases/download/v0.11.0-beta/aster-0.11.0beta-1-aarch64.pkg.tar.zst' },
-                { label: 'Any other distribution on ARM', note: '.tar.gz · ARM64',
-                  url: 'https://github.com/AsterMediaPlayer/aster-linux/releases/download/v0.11.0-beta/Aster-0.11.0-beta-linux-arm64.tar.gz' }
+                { label: 'Debian, Ubuntu, Mint, Pop!_OS', note: '…_amd64.deb' },
+                { label: 'Fedora, openSUSE', note: '…x86_64.rpm' },
+                { label: 'Arch, Manjaro, CachyOS', note: '…x86_64.pkg.tar.zst' },
+                { label: 'Flatpak', note: '…x86_64.flatpak' },
+                { label: 'Any other distribution', note: '…linux-x64.tar.gz' },
+                { label: 'Debian, Ubuntu on ARM (Raspberry Pi 5)', note: '…_arm64.deb' },
+                { label: 'Fedora, openSUSE on ARM', note: '…aarch64.rpm' },
+                { label: 'Arch on ARM', note: '…aarch64.pkg.tar.zst' },
+                { label: 'Any other distribution on ARM', note: '…linux-arm64.tar.gz' }
             ],
             next: [
                 'Debian and Ubuntu: sudo apt install ./aster_…_amd64.deb. Fedora: sudo dnf install ./aster-….rpm. Arch: sudo pacman -U aster-….pkg.tar.zst. These bring the mpv library with them.',
@@ -112,29 +101,27 @@
     });
 
     if (d.choices) {
-        // One download per distribution: list them, and let the person pick instead of guessing.
-        $('lede').textContent = 'Pick the package for your distribution. Your download starts when you choose one.';
+        // Several files: say which one to pick, then send them to the releases page for it.
+        $('lede').textContent = 'Downloads are on GitHub. Find your system below, then download that file from the newest release.';
         var list = document.createElement('ul');
         list.className = 'downloads';
         d.choices.forEach(function (c) {
             var li = document.createElement('li');
-            var a = document.createElement('a');
-            a.href = c.url;
-            a.setAttribute('download', '');
-            a.textContent = c.label + ' ';
+            var row = document.createElement('span');
+            row.className = 'pick';
+            row.textContent = c.label + ' ';
             var small = document.createElement('small');
             small.textContent = c.note;
-            a.appendChild(small);
-            li.appendChild(a);
+            row.appendChild(small);
+            li.appendChild(row);
             list.appendChild(li);
         });
-        var row = $('go-row');
-        row.parentNode.insertBefore(list, row);
+        var goRow = $('go-row');
+        goRow.parentNode.insertBefore(list, goRow);
         var go = $('go');
         go.href = d.release;
-        go.className = 'btn btn-ghost';
-        go.textContent = 'All files and release notes';
-        $('go-note').textContent = 'On GitHub.';
+        go.textContent = 'Open the releases page';
+        $('go-note').textContent = 'On GitHub. Pick the newest release, then your file.';
         return;
     }
 
